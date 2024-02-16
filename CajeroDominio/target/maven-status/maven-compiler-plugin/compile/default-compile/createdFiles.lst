@@ -1,0 +1,8 @@
+com\mycompany\cajeroentidades\RetiroSinCuenta.class
+com\mycompany\cajeroentidades\Cuenta.class
+com\mycompany\cajeroentidades\Transferencias.class
+com\mycompany\cajeroentidades\CajeroEntidades.class
+com\mycompany\cajeroentidades\Cliente.class
+com\mycompany\cajeroentidades\DomicilioCliente.class
+com\mycompany\cajeroentidades\Transaccion.class
+com\mycompany\cajeroentidades\Usuario.class
