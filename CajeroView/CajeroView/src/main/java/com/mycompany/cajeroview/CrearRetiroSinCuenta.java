@@ -25,6 +25,10 @@ public class CrearRetiroSinCuenta extends javax.swing.JFrame {
         this.usuarioNeuvo = usuarioNuevo;
     }
 
+    public void crear_retiro() {
+        float monto_retio = Float.parseFloat(txt_efectivo_retiro.getText());
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,6 +44,7 @@ public class CrearRetiroSinCuenta extends javax.swing.JFrame {
         txt_contraseña_generada = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txt_efectivo_retiro = new javax.swing.JTextField();
+        btn_crear_retiro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +56,19 @@ public class CrearRetiroSinCuenta extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Cantidad Efectivo");
+
+        txt_efectivo_retiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_efectivo_retiroActionPerformed(evt);
+            }
+        });
+
+        btn_crear_retiro.setText("Crear Retiro");
+        btn_crear_retiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_crear_retiroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,11 +90,15 @@ public class CrearRetiroSinCuenta extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txt_folio_generado, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(77, 77, 77))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(210, 210, 210)
+                .addComponent(btn_crear_retiro)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txt_efectivo_retiro, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -91,11 +113,22 @@ public class CrearRetiroSinCuenta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(txt_contraseña_generada, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(btn_crear_retiro)
+                .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_crear_retiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crear_retiroActionPerformed
+        // TODO add your handling code here:
+        crear_retiro();
+    }//GEN-LAST:event_btn_crear_retiroActionPerformed
+
+    private void txt_efectivo_retiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_efectivo_retiroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_efectivo_retiroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +166,7 @@ public class CrearRetiroSinCuenta extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_crear_retiro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
