@@ -4,10 +4,13 @@
  */
 package com.mycompany.cajeropersistencia.DAOS;
 
+import com.mycompany.cajeroentidades.Transaccion;
+import java.util.ArrayList;
+
 /**
  *
  * @author TeLesheo
  */
 public interface ITransaccionDAO {
-
+    public ArrayList<Transaccion> lista_operaciones_de_cuenta();
 }

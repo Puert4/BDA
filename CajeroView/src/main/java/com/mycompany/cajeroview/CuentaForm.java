@@ -6,10 +6,21 @@ package com.mycompany.cajeroview;
 
 import com.mycompany.cajerocontrol.Verificadores;
 import com.mycompany.cajeroentidades.Cuenta;
+import com.mycompany.cajeroentidades.Transaccion;
+import com.mycompany.cajeropersistencia.DAOS.TransaccionDAO;
 import com.mycompany.cajeropersistencia.conexion.Conexion;
+import java.awt.BorderLayout;
 import java.awt.Frame;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -39,6 +50,30 @@ public class CuentaForm extends javax.swing.JDialog {
             this.btn_retiro_sin_cuenta.setVisible(false);
             this.btn_transferencia.setVisible(false);
         }
+        
+        //Muestra lista de operaciones
+        // Lista de cuentas
+        JPanel panel_cuentas = new JPanel();
+        panel_cuentas.setLayout(new GridLayout(0, 1));
+        ArrayList<Transaccion> lista_cuentas = TransaccionDAO.lista_operaciones_de_cuenta(cuenta.getId_cuenta());
+        
+        for (Cuenta cuenta : lista_cuentas) {
+            JPanel panel_cuenta = new JPanel(new BorderLayout());
+            JLabel label_cuenta = new JLabel(cuenta.getNumero_cuenta());
+            JButton btnVerInfo = new JButton("Ver cuenta");
+            btnVerInfo.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    btn_ver_cuentaActionPerformed(e,cuenta);
+                }
+            });
+            panel_cuenta.add(label_cuenta, BorderLayout.CENTER);
+            panel_cuenta.add(btnVerInfo, BorderLayout.EAST);
+            panel_cuentas.add(panel_cuenta);
+        }
+        JScrollPane scrollPane = new JScrollPane(panel_cuentas);
+        this.contenedor_lista_cuentas.removeAll();
+        this.contenedor_lista_cuentas.add(scrollPane);
     }
 
     /**
