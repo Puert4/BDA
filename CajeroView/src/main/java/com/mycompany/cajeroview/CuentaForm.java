@@ -44,6 +44,8 @@ public class CuentaForm extends javax.swing.JDialog {
         this.verify = new Verificadores(conexion);
         this.tDAO = new TransaccionDAO(conexion);
         
+        this.txt_numero_cuenta.setText(cuenta.getNumero_cuenta());
+        
         if(cuenta.getEstado_cuenta().equals("Activo")){
             this.txt_saldo.setText(String.valueOf(cuenta.getSaldo_mxn()));
         }else{
@@ -403,7 +405,8 @@ public class CuentaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_cancelar_cuentaActionPerformed
 
     private void btn_depositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_depositarActionPerformed
-        // TODO add your handling code here:
+        DepositarForm depositar = new DepositarForm(this, true, conexion, cuenta);
+        depositar.setVisible(true);
     }//GEN-LAST:event_btn_depositarActionPerformed
 
     private void btn_retiro_sin_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_retiro_sin_cuentaActionPerformed
