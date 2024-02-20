@@ -144,11 +144,13 @@ public class PaginaPrincipalForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_iniciar_sesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_iniciar_sesionMouseClicked
-        
+        LogInForm logIn = new LogInForm(this, true, conexion);
+        logIn.setVisible(true);
     }//GEN-LAST:event_btn_iniciar_sesionMouseClicked
 
     private void btn_retirar_sin_cuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_retirar_sin_cuentaMouseClicked
-        
+        RetiroSinCuentaForm RSCF = new RetiroSinCuentaForm(this, true, conexion);
+        RSCF.setVisible(true);
     }//GEN-LAST:event_btn_retirar_sin_cuentaMouseClicked
 
     /**

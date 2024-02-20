@@ -1,17 +1,21 @@
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajeropersistencia.conexion.Conexion;
+
 
 /**
  *
  * @author TeLesheo
  */
-public class LogInForm extends javax.swing.JFrame {
-
+public class LogInForm extends javax.swing.JDialog {
+    private Conexion conexion;
     /**
      * Creates new form LogInForm
      */
-    public LogInForm() {
+    public LogInForm(java.awt.Frame parent, boolean modal, Conexion conexion) {
+        super(parent, modal);
         initComponents();
+        this.conexion = conexion;
     }
 
     public void LogIn() {
