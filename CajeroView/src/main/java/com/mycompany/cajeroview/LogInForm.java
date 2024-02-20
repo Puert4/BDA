@@ -11,7 +11,7 @@ import com.mycompany.cajeropersistencia.conexion.Conexion;
  * @author asielapodaca
  */
 public class LogInForm extends javax.swing.JDialog {
-private Conexion conexion;
+    private Conexion conexion;
     /**
      * Creates new form LogInForm
      */
@@ -140,7 +140,7 @@ private Conexion conexion;
     }//GEN-LAST:event_txt_passcodeActionPerformed
 
     private void btn_iniciar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciar_sesionActionPerformed
-        // TODO add your handling code here:
+        this.LogIn();
     }//GEN-LAST:event_btn_iniciar_sesionActionPerformed
 
     private void btn_registrateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registrateMouseClicked
