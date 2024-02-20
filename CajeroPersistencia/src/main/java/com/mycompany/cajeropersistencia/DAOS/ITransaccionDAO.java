@@ -12,5 +12,5 @@ import java.util.ArrayList;
  * @author TeLesheo
  */
 public interface ITransaccionDAO {
-    public ArrayList<Transaccion> lista_operaciones_de_cuenta();
+    public ArrayList<Transaccion> lista_operaciones_de_cuenta(int id_cuenta);
 }

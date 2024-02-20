@@ -14,16 +14,18 @@ public class Transaccion {
 
     //public, private
     int id_transaccion;
+    int id_cuenta;
     String fecha_hora;
     float cantidad;
 
     public Transaccion() {
     }
 
-    public Transaccion(int id_transaccion, String fecha_hora, float cantidad) {
+    public Transaccion(int id_transaccion, String fecha_hora, float cantidad, int id_cuenta) {
         this.id_transaccion = id_transaccion;
         this.fecha_hora = fecha_hora;
         this.cantidad = cantidad;
+        this.id_cuenta = id_cuenta;
     }
 
     public Transaccion(String fecha_hora, float cantidad) {
