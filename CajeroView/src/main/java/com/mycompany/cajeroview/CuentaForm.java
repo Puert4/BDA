@@ -67,11 +67,11 @@ public class CuentaForm extends javax.swing.JDialog {
             JPanel panel_transaccion = new JPanel(new BorderLayout());
             JLabel label_tipo = new JLabel(transaccion.getTipo());
             JLabel label_cantidad = new JLabel(String.valueOf(transaccion.getCantidad()));
-            //JLabel label_fecha_hora = new JLabel(transaccion.getFecha_hora());
+            JLabel label_fecha_hora = new JLabel(transaccion.getFecha_hora());
             
             panel_transaccion.add(label_tipo, BorderLayout.CENTER);
             panel_transaccion.add(label_cantidad, BorderLayout.EAST);
-            //panel_transaccion.add(label_fecha_hora, BorderLayout.CENTER);
+            panel_transaccion.add(label_fecha_hora, BorderLayout.CENTER);
             panel_operaciones.add(panel_transaccion);
         }
         JScrollPane OpScrollPane = new JScrollPane(panel_operaciones);

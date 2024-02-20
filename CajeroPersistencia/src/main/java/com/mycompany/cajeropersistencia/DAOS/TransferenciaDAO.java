@@ -4,10 +4,27 @@
  */
 package com.mycompany.cajeropersistencia.DAOS;
 
+import com.mycompany.cajeropersistencia.conexion.Conexion;
+import com.mycompany.cajeropersistencia.conexion.IConexion;
+import com.mycompany.cajeropersistencia.exceptions.PersistenciaException;
+import java.util.logging.Logger;
+
 /**
  *
  * @author TeLesheo
  */
-public class TransferenciaDAO {
+public class TransferenciaDAO implements ITransferenciaDAO{
+
+    final IConexion conexion;
+    static final Logger logger = Logger.getLogger(Conexion.class.getName());
+
+    public TransferenciaDAO(IConexion conexion) {
+        this.conexion = conexion;
+    }
+    
+    @Override
+    public void transferencia(float cantidad, int cuenta_origen, int cuenta_destino) throws PersistenciaException {
+        
+    }
 
 }
