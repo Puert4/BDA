@@ -157,6 +157,7 @@ public class LogInForm extends javax.swing.JDialog {
     private void btn_registrateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registrateMouseClicked
         RegistroUsuarioForm RUF = new RegistroUsuarioForm(this, true, conexion);
         RUF.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_registrateMouseClicked
 
 

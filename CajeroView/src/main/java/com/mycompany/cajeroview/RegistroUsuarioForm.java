@@ -34,7 +34,7 @@ public class RegistroUsuarioForm extends javax.swing.JDialog {
         String passcode = txt_passcode.getText();
         String confirmacion_passcode = txt_confirmacion_passcode.getText();
         
-        if(correo.equalsIgnoreCase(confirmacion_correo) || passcode.equalsIgnoreCase(confirmacion_passcode)){
+        if(!correo.equals(confirmacion_correo) || !passcode.equals(confirmacion_passcode)){
             JOptionPane.showMessageDialog(null, "El correo o la contraseña son diferentes.");
         }else if(verify.verificarEmailExistente(correo)){
             JOptionPane.showMessageDialog(null, "Este correo ya está registrado, pruebe con otro correo.");
@@ -44,6 +44,8 @@ public class RegistroUsuarioForm extends javax.swing.JDialog {
             usuarioNuevo.setPasscode_usuario(passcode);
             
             SignUpForm signUp = new SignUpForm(this, true, conexion, usuarioNuevo);
+            signUp.setVisible(rootPaneCheckingEnabled);
+            this.dispose();
             
         }
     }

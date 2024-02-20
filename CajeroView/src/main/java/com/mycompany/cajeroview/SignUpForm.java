@@ -7,6 +7,9 @@ import com.mycompany.cajeropersistencia.DTO.UsuarioNuevoDTO;
 import com.mycompany.cajeropersistencia.conexion.Conexion;
 import com.mycompany.cajeropersistencia.exceptions.PersistenciaException;
 import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
+import java.sql.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -32,13 +35,14 @@ public class SignUpForm extends javax.swing.JDialog {
         String nombre = txt_nombres.getText();
         String apellido_paterno = txt_apellido_paterno.getText();
         String apellido_materno = txt_apellido_materno.getText();
-        String fecha_nacimiento = jdc_fecha_nacimiento.getDateFormatString();
+        String fecha_nacimiento = ((JTextField)jdc_fecha_nacimiento.getDateEditor().getUiComponent()).getText();
         int codigo_postal = Integer.parseInt(txt_codigo_postal.getText());
         String calle = txt_calle.getText();
         int numero_interior = Integer.parseInt(txt_numero_interior.getText());
         int numero_exterior = Integer.parseInt(txt_numero_exterior.getText());
         
-        ClienteNuevoDTO clienteNuevo = new ClienteNuevoDTO(
+        JOptionPane.showMessageDialog(null, fecha_nacimiento);
+        /**ClienteNuevoDTO clienteNuevo = new ClienteNuevoDTO(
                 nombre,
                 apellido_paterno,
                 apellido_materno,
@@ -50,8 +54,12 @@ public class SignUpForm extends javax.swing.JDialog {
                 numero_exterior,
                 codigo_postal
         );
-        
-        sp.crear_usuario_cliente_domicilio(usuario, clienteNuevo, domicilioNuevo);
+        System.out.println(fecha_nacimiento);
+        int id_usuario = sp.crear_usuario_cliente_domicilio(usuario, clienteNuevo, domicilioNuevo);
+        if(id_usuario != -1){
+            CuentasForm cuentasForm = new CuentasForm(conexion, id_usuario);
+            cuentasForm.setVisible(true);
+        }**/
     }
 
     /**
@@ -209,7 +217,7 @@ public class SignUpForm extends javax.swing.JDialog {
         jPanel1.add(txt_numero_interior, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 110, 30));
 
         jdc_fecha_nacimiento.setBackground(new java.awt.Color(255, 255, 255));
-        jdc_fecha_nacimiento.setDateFormatString("dd/MM/yyyy");
+        jdc_fecha_nacimiento.setDateFormatString("yyyy-MM-dd");
         jPanel1.add(jdc_fecha_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 150, 30));
 
         jPanel2.add(jPanel1, new java.awt.GridBagConstraints());

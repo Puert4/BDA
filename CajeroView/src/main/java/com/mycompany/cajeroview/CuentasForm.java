@@ -4,17 +4,22 @@
  */
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajeropersistencia.conexion.Conexion;
+
 /**
  *
  * @author TeLesheo
  */
 public class CuentasForm extends javax.swing.JFrame {
-
+    private Conexion conexion;
+    private int id_usuario;
     /**
      * Creates new form CuentasForm
      */
-    public CuentasForm() {
+    public CuentasForm(Conexion conexion, int id_usuario) {
         initComponents();
+        this.conexion = conexion;
+        this.id_usuario = id_usuario;
     }
 
     /**
