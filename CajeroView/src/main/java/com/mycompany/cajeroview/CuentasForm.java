@@ -69,6 +69,7 @@ public class CuentasForm extends javax.swing.JFrame {
         btn_iniciar_sesion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_iniciar_sesion.setForeground(new java.awt.Color(242, 244, 247));
         btn_iniciar_sesion.setText("Cerrar sesión");
+        btn_iniciar_sesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_iniciar_sesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_iniciar_sesionActionPerformed(evt);
@@ -106,6 +107,7 @@ public class CuentasForm extends javax.swing.JFrame {
         btn_iniciar_sesion2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_iniciar_sesion2.setForeground(new java.awt.Color(242, 244, 247));
         btn_iniciar_sesion2.setText("Crear cuenta");
+        btn_iniciar_sesion2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_iniciar_sesion2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_iniciar_sesion2ActionPerformed(evt);
