@@ -4,17 +4,23 @@
  */
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajeropersistencia.conexion.Conexion;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author TeLesheo
  */
 public class PaginaPrincipalForm extends javax.swing.JFrame {
-
+    private Conexion conexion;
     /**
      * Creates new form PaginaPrincipalForm
      */
     public PaginaPrincipalForm() {
         initComponents();
+        this.conexion = new Conexion();
     }
 
     /**
@@ -133,7 +139,12 @@ public class PaginaPrincipalForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_iniciar_sesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_iniciar_sesionMouseClicked
-        
+        try {
+            conexion.obtenerConexion();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            //Logger.getLogger(PaginaPrincipalForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_iniciar_sesionMouseClicked
 
     private void btn_retirar_sin_cuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_retirar_sin_cuentaMouseClicked
