@@ -21,6 +21,11 @@ public class PaginaPrincipalForm extends javax.swing.JFrame {
     public PaginaPrincipalForm() {
         initComponents();
         this.conexion = new Conexion();
+        try {
+            conexion.obtenerConexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(PaginaPrincipalForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -139,12 +144,7 @@ public class PaginaPrincipalForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_iniciar_sesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_iniciar_sesionMouseClicked
-        try {
-            conexion.obtenerConexion();
-        } catch (SQLException ex) {
-            System.out.println(ex);
-            //Logger.getLogger(PaginaPrincipalForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_btn_iniciar_sesionMouseClicked
 
     private void btn_retirar_sin_cuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_retirar_sin_cuentaMouseClicked
