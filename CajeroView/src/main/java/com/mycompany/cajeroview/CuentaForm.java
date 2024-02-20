@@ -367,7 +367,8 @@ public class CuentaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_depositarActionPerformed
 
     private void btn_retiro_sin_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_retiro_sin_cuentaActionPerformed
-        // TODO add your handling code here:
+        TransaccionRetiroSinCuenta TRSC = new TransaccionRetiroSinCuenta(this, true, conexion, cuenta);
+        TRSC.setVisible(true);
     }//GEN-LAST:event_btn_retiro_sin_cuentaActionPerformed
 
     private void btn_transferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transferenciaActionPerformed

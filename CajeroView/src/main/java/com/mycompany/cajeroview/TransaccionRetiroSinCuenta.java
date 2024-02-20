@@ -4,18 +4,25 @@
  */
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajeroentidades.Cuenta;
+import com.mycompany.cajeropersistencia.conexion.Conexion;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author asielapodaca
  */
 public class TransaccionRetiroSinCuenta extends javax.swing.JDialog {
-
+    private Conexion conexion;
+    private Cuenta cuenta;
     /**
      * Creates new form TransaccionRetiroSinCuenta
      */
-    public TransaccionRetiroSinCuenta(java.awt.Frame parent, boolean modal) {
+    public TransaccionRetiroSinCuenta(java.awt.Dialog parent, boolean modal, Conexion  conexion, Cuenta cuenta) {
         super(parent, modal);
         initComponents();
+        this.conexion = conexion;
+        this.cuenta = cuenta;
     }
 
     /**
@@ -102,54 +109,18 @@ public class TransaccionRetiroSinCuenta extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
-        // TODO add your handling code here:
+        int cantidad = Integer.parseInt(txt_cantidad.getText());
+        if(cantidad > 0){
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "La cantidad ingresada debe ser mayor a 0.");
+        }
     }//GEN-LAST:event_btn_confirmarActionPerformed
 
     private void txt_cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cantidadActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TransaccionRetiroSinCuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TransaccionRetiroSinCuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TransaccionRetiroSinCuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TransaccionRetiroSinCuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                TransaccionRetiroSinCuenta dialog = new TransaccionRetiroSinCuenta(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_confirmar;
