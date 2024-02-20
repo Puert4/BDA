@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Cuenta {
 
     private int id_cuenta;
-    private int numero_cuenta;
+    private String numero_cuenta;
     private float saldo_mxn;
     private String estado_cuenta;
     private String fecha_apertura;
@@ -18,7 +18,7 @@ public class Cuenta {
 
     }
 
-    public Cuenta(int id, int numero_cuenta, float saldo_mxn, String estado, String fecha_apertura) {
+    public Cuenta(int id, String numero_cuenta, float saldo_mxn, String estado, String fecha_apertura) {
         this.id_cuenta = id;
         this.numero_cuenta = numero_cuenta;
         this.saldo_mxn = saldo_mxn;
@@ -50,11 +50,11 @@ public class Cuenta {
         this.id_cuenta = id_cuenta;
     }
 
-    public int getNumero_cuenta() {
+    public String getNumero_cuenta() {
         return numero_cuenta;
     }
 
-    public void setNumero_cuenta(int numero_cuenta) {
+    public void setNumero_cuenta(String numero_cuenta) {
         this.numero_cuenta = numero_cuenta;
     }
     

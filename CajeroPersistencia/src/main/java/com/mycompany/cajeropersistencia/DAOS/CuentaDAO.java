@@ -73,7 +73,7 @@ public class CuentaDAO implements ICuentaDAO {
 
     @Override
     public ArrayList<Cuenta> lista_cuentas_del_usuario(int id_usuario) {
-        
+        ArrayList<Cuenta> lista_cuentas = new ArrayList<>();
         try (Connection connection = conexion.obtenerConexion()) {
             // Consulta SQL para obtener todas las cuentas del usuario
             String sql = "SELECT * FROM Cuentas WHERE id_usuario = "+id_usuario+";";
@@ -82,9 +82,16 @@ public class CuentaDAO implements ICuentaDAO {
 
             // Itera sobre el resultado y muestra la información de cada cuenta
             while (rs.next()) {
-                Cuenta cuenta = new Cuenta();
+                Cuenta cuenta = new Cuenta(
+                        rs.getInt("id_cuenta"),
+                        rs.getString("numero_cuenta"),
+                        rs.getFloat("saldo_mxn"),
+                        rs.getString("estado"),
+                        rs.getDate("fecha_apertura").toString()
+                );
+                lista_cuentas.add(cuenta);
             }
-
+            return lista_cuentas;
         } catch (SQLException e) {
             e.printStackTrace();
         }

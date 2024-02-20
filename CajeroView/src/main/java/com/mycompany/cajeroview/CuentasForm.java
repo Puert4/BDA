@@ -5,7 +5,19 @@
 package com.mycompany.cajeroview;
 
 import com.mycompany.cajerocontrol.StoredProcedures;
+import com.mycompany.cajeroentidades.Cuenta;
+import com.mycompany.cajeropersistencia.DAOS.CuentaDAO;
 import com.mycompany.cajeropersistencia.conexion.Conexion;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -15,14 +27,40 @@ public class CuentasForm extends javax.swing.JFrame {
     private Conexion conexion;
     private int id_usuario;
     private StoredProcedures sp;
+    private CuentaDAO cuentaDAO;
     /**
      * Creates new form CuentasForm
      */
     public CuentasForm(Conexion conexion, int id_usuario) {
         initComponents();
         this.conexion = conexion;
+        this.cuentaDAO = new CuentaDAO(conexion);
         this.id_usuario = id_usuario;
         sp = new StoredProcedures(conexion);
+        
+        // Lista de cuentas
+        JPanel panel_cuentas = new JPanel();
+        panel_cuentas.setLayout(new GridLayout(0, 1));
+        ArrayList<Cuenta> lista_cuentas = cuentaDAO.lista_cuentas_del_usuario(this.id_usuario);
+        
+        for (Cuenta cuenta : lista_cuentas) {
+            JPanel panel_cuenta = new JPanel(new BorderLayout());
+            JLabel label_cuenta = new JLabel(cuenta.getNumero_cuenta());
+            JButton btnVerInfo = new JButton("Ver cuenta");
+            btnVerInfo.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Aquí puedes implementar la lógica para ver la información de la cuenta
+                }
+            });
+            panel_cuenta.add(label_cuenta, BorderLayout.CENTER);
+            panel_cuenta.add(btnVerInfo, BorderLayout.EAST);
+            panel_cuentas.add(panel_cuenta);
+        }
+        JScrollPane scrollPane = new JScrollPane(panel_cuentas);
+        this.contenedor_lista_cuentas.removeAll();
+        this.contenedor_lista_cuentas.add(scrollPane);
+
     }
 
     /**
@@ -37,7 +75,6 @@ public class CuentasForm extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         contenedor_lista_cuentas = new javax.swing.JPanel();
-        jsp_lista_cuentas = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -59,21 +96,7 @@ public class CuentasForm extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         contenedor_lista_cuentas.setBackground(new java.awt.Color(242, 244, 247));
-
-        jsp_lista_cuentas.setBackground(new java.awt.Color(242, 244, 247));
-        jsp_lista_cuentas.setBorder(null);
-
-        javax.swing.GroupLayout contenedor_lista_cuentasLayout = new javax.swing.GroupLayout(contenedor_lista_cuentas);
-        contenedor_lista_cuentas.setLayout(contenedor_lista_cuentasLayout);
-        contenedor_lista_cuentasLayout.setHorizontalGroup(
-            contenedor_lista_cuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jsp_lista_cuentas)
-        );
-        contenedor_lista_cuentasLayout.setVerticalGroup(
-            contenedor_lista_cuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jsp_lista_cuentas)
-        );
-
+        contenedor_lista_cuentas.setLayout(new java.awt.BorderLayout());
         jPanel2.add(contenedor_lista_cuentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 650, 350));
 
         jPanel1.setBackground(new java.awt.Color(0, 114, 179));
@@ -184,8 +207,22 @@ public class CuentasForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_ver_cuentaActionPerformed(java.awt.event.ActionEvent evt){
+        
+    }
+    
     private void btn_crear_cuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crear_cuentaMouseClicked
         sp.crear_cuenta(id_usuario);
+        this.dispose();
+        CuentasForm cuentasForm = new CuentasForm(conexion, id_usuario);
+        cuentasForm.setVisible(true);
+        cuentasForm.setVisible(true);
+        cuentasForm.setVisible(true);
+        cuentasForm.setVisible(true);
+        
+        
+        
+
     }//GEN-LAST:event_btn_crear_cuentaMouseClicked
 
     private void btn_perfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_perfilMouseClicked
@@ -211,6 +248,5 @@ public class CuentasForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jsp_lista_cuentas;
     // End of variables declaration//GEN-END:variables
 }
