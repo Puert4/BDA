@@ -115,6 +115,7 @@ public class TransaccionRetiroSinCuenta extends javax.swing.JDialog {
         int cantidad = Integer.parseInt(txt_cantidad.getText());
         if(cantidad > 0){
             JOptionPane.showMessageDialog(null, sp.crear_retiro_sin_cuenta(cuenta, cantidad));
+            this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "La cantidad ingresada debe ser mayor a 0.");
         }

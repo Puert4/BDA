@@ -4,7 +4,9 @@
  */
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajerocontrol.Verificadores;
 import com.mycompany.cajeropersistencia.conexion.Conexion;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,6 +14,7 @@ import com.mycompany.cajeropersistencia.conexion.Conexion;
  */
 public class RetiroSinCuentaForm extends javax.swing.JDialog {
     private Conexion conexion;
+    private Verificadores verify;
     /**
      * Creates new form RetiroSInCuenta
      */
@@ -19,6 +22,7 @@ public class RetiroSinCuentaForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.conexion = conexion;
+        this.verify = new Verificadores(conexion);
     }
 
     /**
@@ -113,7 +117,9 @@ public class RetiroSinCuentaForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_retirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_retirarActionPerformed
-        // TODO add your handling code here:
+        String folio = txt_folio.getText();
+        String codigo = txt_code.getText();
+        JOptionPane.showMessageDialog(null, verify.verificar_retiro_sin_cuenta(folio, codigo));
     }//GEN-LAST:event_btn_retirarActionPerformed
 
     private void txt_folioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_folioActionPerformed

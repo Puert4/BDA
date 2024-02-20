@@ -58,13 +58,13 @@ public class CuentaDAO implements ICuentaDAO {
             throw new ValidacionDTOException("El ID de la cuenta debe ser un número positivo.");
         }
 
-        String sentenciaSQL = "DELETE FROM cuentas WHERE id_cuenta = ?";
+        String sentenciaSQL = "UPDATE Cuentas SET estado = 'Cancelado' WHERE id_cuenta = ?";
         try (Connection conexion = this.conexion.obtenerConexion(); PreparedStatement comando = conexion.prepareStatement(sentenciaSQL)) {
             comando.setInt(1, idCuenta);
 
-            int numeroRegistrosEliminados = comando.executeUpdate();
+            int numeroRegistrosCancelados = comando.executeUpdate();
 
-            logger.log(Level.INFO, "Se canceló {0} cuenta", numeroRegistrosEliminados);
+            logger.log(Level.INFO, "Se canceló {0} cuenta", numeroRegistrosCancelados);
         } catch (SQLException ex) {
             logger.log(Level.SEVERE, "No se pudo cancelar la cuenta", ex);
             throw new PersistenciaException("No se pudo cancelar la cuenta", ex);

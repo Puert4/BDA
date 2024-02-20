@@ -4,8 +4,12 @@
  */
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajerocontrol.Verificadores;
 import com.mycompany.cajeroentidades.Cuenta;
 import com.mycompany.cajeropersistencia.conexion.Conexion;
+import java.awt.Frame;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,14 +18,27 @@ import com.mycompany.cajeropersistencia.conexion.Conexion;
 public class CuentaForm extends javax.swing.JDialog {
     private Conexion conexion;
     private Cuenta cuenta;
+    private Verificadores verify;
+    private Frame parent;
     /**
      * Creates new form TransaccionRetiroSinCuentaForm
      */
     public CuentaForm(java.awt.Frame parent, boolean modal, Conexion conexion, Cuenta cuenta) {
         super(parent, modal);
         initComponents();
+        this.parent = parent;
         this.conexion = conexion;
         this.cuenta = cuenta;
+        this.verify = new Verificadores(conexion);
+        
+        if(cuenta.getEstado_cuenta().equals("Activo")){
+            this.txt_saldo.setText(String.valueOf(cuenta.getSaldo_mxn()));
+        }else{
+            this.btn_cancelar_cuenta.setVisible(false);
+            this.btn_depositar.setVisible(false);
+            this.btn_retiro_sin_cuenta.setVisible(false);
+            this.btn_transferencia.setVisible(false);
+        }
     }
 
     /**
@@ -37,7 +54,6 @@ public class CuentaForm extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         contenedor_lista_cuentas = new javax.swing.JPanel();
         jsp_historial_operaciones = new javax.swing.JScrollPane();
-        btn_cancelar_cuenta = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -57,6 +73,7 @@ public class CuentaForm extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jdc_fecha_desde = new com.toedter.calendar.JDateChooser();
         jdc_fecha_hasta = new com.toedter.calendar.JDateChooser();
+        btn_cancelar_cuenta = new javax.swing.JButton();
         btn_depositar = new javax.swing.JButton();
         btn_retiro_sin_cuenta = new javax.swing.JButton();
         btn_transferencia = new javax.swing.JButton();
@@ -89,18 +106,6 @@ public class CuentaForm extends javax.swing.JDialog {
 
         jPanel2.add(contenedor_lista_cuentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 650, 250));
 
-        btn_cancelar_cuenta.setBackground(new java.awt.Color(140, 198, 195));
-        btn_cancelar_cuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn_cancelar_cuenta.setForeground(new java.awt.Color(0, 0, 0));
-        btn_cancelar_cuenta.setText("Cancelar cuenta");
-        btn_cancelar_cuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_cancelar_cuenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cancelar_cuentaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btn_cancelar_cuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 160, 40));
-
         jPanel1.setBackground(new java.awt.Color(0, 114, 179));
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -120,7 +125,7 @@ public class CuentaForm extends javax.swing.JDialog {
         txt_saldo.setBackground(new java.awt.Color(255, 255, 255));
         txt_saldo.setFont(new java.awt.Font("Avenir Next Condensed", 0, 36)); // NOI18N
         txt_saldo.setForeground(new java.awt.Color(255, 255, 255));
-        txt_saldo.setText("0.00");
+        txt_saldo.setText("0.00 CANCELADA");
         jPanel1.add(txt_saldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 230, 48));
 
         txt_numero_cuenta.setBackground(new java.awt.Color(255, 255, 255));
@@ -295,6 +300,18 @@ public class CuentaForm extends javax.swing.JDialog {
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 170));
 
+        btn_cancelar_cuenta.setBackground(new java.awt.Color(140, 198, 195));
+        btn_cancelar_cuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_cancelar_cuenta.setForeground(new java.awt.Color(0, 0, 0));
+        btn_cancelar_cuenta.setText("Cancelar cuenta");
+        btn_cancelar_cuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cancelar_cuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelar_cuentaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_cancelar_cuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 420, 160, 40));
+
         btn_depositar.setBackground(new java.awt.Color(0, 194, 206));
         btn_depositar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_depositar.setForeground(new java.awt.Color(0, 0, 0));
@@ -359,7 +376,11 @@ public class CuentaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_jcb_rango_fechasActionPerformed
 
     private void btn_cancelar_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelar_cuentaActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, verify.cancelar_cuenta(cuenta));
+        this.dispose();
+        cuenta.setEstado_cuenta("Cancelado");
+        CuentaForm cuentaForm = new CuentaForm(parent, true, conexion, cuenta);
+        cuentaForm.setVisible(true);
     }//GEN-LAST:event_btn_cancelar_cuentaActionPerformed
 
     private void btn_depositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_depositarActionPerformed
