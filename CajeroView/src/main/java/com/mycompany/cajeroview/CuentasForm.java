@@ -4,6 +4,7 @@
  */
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajerocontrol.StoredProcedures;
 import com.mycompany.cajeropersistencia.conexion.Conexion;
 
 /**
@@ -13,6 +14,7 @@ import com.mycompany.cajeropersistencia.conexion.Conexion;
 public class CuentasForm extends javax.swing.JFrame {
     private Conexion conexion;
     private int id_usuario;
+    private StoredProcedures sp;
     /**
      * Creates new form CuentasForm
      */
@@ -20,6 +22,7 @@ public class CuentasForm extends javax.swing.JFrame {
         initComponents();
         this.conexion = conexion;
         this.id_usuario = id_usuario;
+        sp = new StoredProcedures(conexion);
     }
 
     /**
@@ -64,11 +67,11 @@ public class CuentasForm extends javax.swing.JFrame {
         contenedor_lista_cuentas.setLayout(contenedor_lista_cuentasLayout);
         contenedor_lista_cuentasLayout.setHorizontalGroup(
             contenedor_lista_cuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jsp_lista_cuentas, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+            .addComponent(jsp_lista_cuentas)
         );
         contenedor_lista_cuentasLayout.setVerticalGroup(
             contenedor_lista_cuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jsp_lista_cuentas, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+            .addComponent(jsp_lista_cuentas)
         );
 
         jPanel2.add(contenedor_lista_cuentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 650, 350));
@@ -182,7 +185,7 @@ public class CuentasForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_crear_cuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crear_cuentaMouseClicked
-        
+        sp.crear_cuenta(id_usuario);
     }//GEN-LAST:event_btn_crear_cuentaMouseClicked
 
     private void btn_perfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_perfilMouseClicked

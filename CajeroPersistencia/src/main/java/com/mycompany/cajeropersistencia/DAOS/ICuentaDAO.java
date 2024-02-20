@@ -4,6 +4,7 @@ import com.mycompany.cajeroentidades.Cuenta;
 import com.mycompany.cajeropersistencia.DTO.CuentaNuevaDTO;
 import com.mycompany.cajeropersistencia.exceptions.PersistenciaException;
 import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -11,7 +12,9 @@ import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
  */
 public interface ICuentaDAO {
 
-    Cuenta agregar(CuentaNuevaDTO cuentaNuevaDTO) throws PersistenciaException, ValidacionDTOException;
+    void agregar(CuentaNuevaDTO cuentaNuevaDTO) throws PersistenciaException, ValidacionDTOException;
 
     void cancelar(int idCuenta) throws PersistenciaException, ValidacionDTOException;
+    
+    public ArrayList<Cuenta> lista_cuentas_del_usuario(int id_usuario);
 }

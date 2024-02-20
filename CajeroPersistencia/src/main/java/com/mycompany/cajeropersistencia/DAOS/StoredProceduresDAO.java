@@ -60,4 +60,19 @@ public class StoredProceduresDAO {
         }
         return -1;
     }
+    
+    public void crear_cuenta(int id_usuario){
+        try (Connection connection = conexion.obtenerConexion()) {
+            String procedureCall = "{call CrearCuentaUsuario(?)}";
+            CallableStatement statement = connection.prepareCall(procedureCall);
+            
+            // Configura los parámetros del procedimiento almacenado
+            statement.setInt(1, id_usuario);
+
+            // Ejecuta el procedimiento almacenado
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
