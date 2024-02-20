@@ -44,18 +44,18 @@ public class CuentaForm extends javax.swing.JDialog {
         rbtn_deposito = new javax.swing.JRadioButton();
         rbtn_retiro_sin_cuenta = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
+        rbtn_deposito1 = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jcb_rango_fechas = new javax.swing.JCheckBox();
-        jft_fecha2 = new javax.swing.JFormattedTextField();
-        jft_fecha1 = new javax.swing.JFormattedTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jdc_fecha_desde = new com.toedter.calendar.JDateChooser();
+        jdc_fecha_hasta = new com.toedter.calendar.JDateChooser();
         btn_depositar = new javax.swing.JButton();
         btn_retiro_sin_cuenta = new javax.swing.JButton();
         btn_transferencia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 500));
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(17, 31, 77));
@@ -85,7 +85,7 @@ public class CuentaForm extends javax.swing.JDialog {
 
         btn_cancelar_cuenta.setBackground(new java.awt.Color(140, 198, 195));
         btn_cancelar_cuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn_cancelar_cuenta.setForeground(new java.awt.Color(242, 244, 247));
+        btn_cancelar_cuenta.setForeground(new java.awt.Color(255, 255, 255));
         btn_cancelar_cuenta.setText("Cancelar cuenta");
         btn_cancelar_cuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cancelar_cuenta.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +121,7 @@ public class CuentaForm extends javax.swing.JDialog {
         txt_numero_cuenta.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
         txt_numero_cuenta.setForeground(new java.awt.Color(255, 255, 255));
         txt_numero_cuenta.setText("xxx-xxx");
-        jPanel1.add(txt_numero_cuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, 48));
+        jPanel1.add(txt_numero_cuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, 48));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
@@ -139,7 +139,7 @@ public class CuentaForm extends javax.swing.JDialog {
         jLabel11.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Número de cuenta:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, -1, 48));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, 48));
 
         jPanel3.setBackground(new java.awt.Color(0, 114, 179));
 
@@ -147,6 +147,11 @@ public class CuentaForm extends javax.swing.JDialog {
         rbtn_deposito.setFont(new java.awt.Font("Avenir Next Condensed", 0, 14)); // NOI18N
         rbtn_deposito.setForeground(new java.awt.Color(255, 255, 255));
         rbtn_deposito.setText("Deposito");
+        rbtn_deposito.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbtn_depositoMouseClicked(evt);
+            }
+        });
         rbtn_deposito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtn_depositoActionPerformed(evt);
@@ -157,6 +162,11 @@ public class CuentaForm extends javax.swing.JDialog {
         rbtn_retiro_sin_cuenta.setFont(new java.awt.Font("Avenir Next Condensed", 0, 14)); // NOI18N
         rbtn_retiro_sin_cuenta.setForeground(new java.awt.Color(255, 255, 255));
         rbtn_retiro_sin_cuenta.setText("Retiro sin cuenta");
+        rbtn_retiro_sin_cuenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbtn_retiro_sin_cuentaMouseClicked(evt);
+            }
+        });
         rbtn_retiro_sin_cuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtn_retiro_sin_cuentaActionPerformed(evt);
@@ -168,31 +178,50 @@ public class CuentaForm extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Tipo de operación");
 
+        grupo_tipo_operacion.add(rbtn_deposito1);
+        rbtn_deposito1.setFont(new java.awt.Font("Avenir Next Condensed", 0, 14)); // NOI18N
+        rbtn_deposito1.setForeground(new java.awt.Color(255, 255, 255));
+        rbtn_deposito1.setSelected(true);
+        rbtn_deposito1.setText("Todos");
+        rbtn_deposito1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbtn_deposito1MouseClicked(evt);
+            }
+        });
+        rbtn_deposito1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtn_deposito1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rbtn_deposito)
                     .addComponent(rbtn_retiro_sin_cuenta)
-                    .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel3)
+                    .addComponent(rbtn_deposito1))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rbtn_deposito)
+                .addComponent(rbtn_deposito1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rbtn_deposito)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rbtn_retiro_sin_cuenta)
-                .addContainerGap())
+                .addGap(26, 26, 26))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 20, 130, 90));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 130, 120));
 
         jPanel4.setBackground(new java.awt.Color(0, 114, 179));
 
@@ -205,12 +234,6 @@ public class CuentaForm extends javax.swing.JDialog {
             }
         });
 
-        jft_fecha2.setBackground(new java.awt.Color(255, 255, 255));
-        jft_fecha2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-
-        jft_fecha1.setBackground(new java.awt.Color(255, 255, 255));
-        jft_fecha1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Avenir Next Condensed", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -221,6 +244,12 @@ public class CuentaForm extends javax.swing.JDialog {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Hasta:");
 
+        jdc_fecha_desde.setBackground(new java.awt.Color(255, 255, 255));
+        jdc_fecha_desde.setDateFormatString("dd/MM/yyyy");
+
+        jdc_fecha_hasta.setBackground(new java.awt.Color(255, 255, 255));
+        jdc_fecha_hasta.setDateFormatString("dd/MM/yyyy");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -230,14 +259,15 @@ public class CuentaForm extends javax.swing.JDialog {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcb_rango_fechas)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel7))
-                        .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jft_fecha2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jft_fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(9, Short.MAX_VALUE))
+                            .addComponent(jdc_fecha_hasta, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                            .addComponent(jdc_fecha_desde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,23 +275,23 @@ public class CuentaForm extends javax.swing.JDialog {
                 .addContainerGap(9, Short.MAX_VALUE)
                 .addComponent(jcb_rango_fechas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jft_fecha1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jft_fecha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jdc_fecha_desde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addComponent(jdc_fecha_hasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, 170, -1));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 210, -1));
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 170));
 
         btn_depositar.setBackground(new java.awt.Color(0, 194, 206));
         btn_depositar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn_depositar.setForeground(new java.awt.Color(242, 244, 247));
+        btn_depositar.setForeground(new java.awt.Color(255, 255, 255));
         btn_depositar.setText("Depositar");
         btn_depositar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_depositar.addActionListener(new java.awt.event.ActionListener() {
@@ -273,7 +303,7 @@ public class CuentaForm extends javax.swing.JDialog {
 
         btn_retiro_sin_cuenta.setBackground(new java.awt.Color(0, 194, 206));
         btn_retiro_sin_cuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn_retiro_sin_cuenta.setForeground(new java.awt.Color(242, 244, 247));
+        btn_retiro_sin_cuenta.setForeground(new java.awt.Color(255, 255, 255));
         btn_retiro_sin_cuenta.setText("Retiro sin cuenta");
         btn_retiro_sin_cuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_retiro_sin_cuenta.addActionListener(new java.awt.event.ActionListener() {
@@ -285,7 +315,7 @@ public class CuentaForm extends javax.swing.JDialog {
 
         btn_transferencia.setBackground(new java.awt.Color(0, 194, 206));
         btn_transferencia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn_transferencia.setForeground(new java.awt.Color(242, 244, 247));
+        btn_transferencia.setForeground(new java.awt.Color(255, 255, 255));
         btn_transferencia.setText("Transferencia");
         btn_transferencia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_transferencia.addActionListener(new java.awt.event.ActionListener() {
@@ -337,6 +367,22 @@ public class CuentaForm extends javax.swing.JDialog {
     private void btn_transferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transferenciaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_transferenciaActionPerformed
+
+    private void rbtn_retiro_sin_cuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtn_retiro_sin_cuentaMouseClicked
+        
+    }//GEN-LAST:event_rbtn_retiro_sin_cuentaMouseClicked
+
+    private void rbtn_depositoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtn_depositoMouseClicked
+        
+    }//GEN-LAST:event_rbtn_depositoMouseClicked
+
+    private void rbtn_deposito1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtn_deposito1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtn_deposito1MouseClicked
+
+    private void rbtn_deposito1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_deposito1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtn_deposito1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -401,10 +447,11 @@ public class CuentaForm extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JCheckBox jcb_rango_fechas;
-    private javax.swing.JFormattedTextField jft_fecha1;
-    private javax.swing.JFormattedTextField jft_fecha2;
+    private com.toedter.calendar.JDateChooser jdc_fecha_desde;
+    private com.toedter.calendar.JDateChooser jdc_fecha_hasta;
     private javax.swing.JScrollPane jsp_historial_operaciones;
     private javax.swing.JRadioButton rbtn_deposito;
+    private javax.swing.JRadioButton rbtn_deposito1;
     private javax.swing.JRadioButton rbtn_retiro_sin_cuenta;
     private javax.swing.JLabel txt_numero_cuenta;
     private javax.swing.JLabel txt_saldo;
