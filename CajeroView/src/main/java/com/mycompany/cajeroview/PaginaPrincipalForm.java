@@ -21,11 +21,6 @@ public class PaginaPrincipalForm extends javax.swing.JFrame {
     public PaginaPrincipalForm() {
         initComponents();
         this.conexion = new Conexion();
-        try {
-            conexion.obtenerConexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(PaginaPrincipalForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 
     /**

@@ -4,7 +4,9 @@
  */
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajerocontrol.Verificadores;
 import com.mycompany.cajeropersistencia.conexion.Conexion;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,6 +14,7 @@ import com.mycompany.cajeropersistencia.conexion.Conexion;
  */
 public class LogInForm extends javax.swing.JDialog {
     private Conexion conexion;
+    private Verificadores verify;
     /**
      * Creates new form LogInForm
      */
@@ -19,11 +22,16 @@ public class LogInForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.conexion = conexion;
+        this.verify = new Verificadores(conexion);
     }
 
     public void LogIn() {
         String correo = txt_email.getText();
         String passcode = txt_passcode.getText();
+        int id = verify.verificarCredenciales(correo, passcode);
+        if(id == -1){
+            JOptionPane.showMessageDialog(null,"El correo no está registrado o la contraseña es incorrecta.");
+        }
         
        
     }
@@ -49,6 +57,7 @@ public class LogInForm extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(17, 31, 77));
         jPanel2.setMinimumSize(new java.awt.Dimension(750, 500));
@@ -129,6 +138,7 @@ public class LogInForm extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
