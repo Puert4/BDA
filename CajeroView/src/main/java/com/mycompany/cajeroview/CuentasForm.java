@@ -133,6 +133,7 @@ public class CuentasForm extends javax.swing.JFrame {
         jLabel6.setText("0.00");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 230, 48));
 
+        btn_usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/cajeroview/imagenes/usuario.png"))); // NOI18N
         btn_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_usuarioMouseClicked(evt);

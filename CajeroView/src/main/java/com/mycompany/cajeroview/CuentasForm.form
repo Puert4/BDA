@@ -296,6 +296,11 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="btn_usuario">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/mycompany/cajeroview/imagenes/usuario.png"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_usuarioMouseClicked"/>
               </Events>
