@@ -8,14 +8,12 @@ import com.mycompany.cajeropersistencia.conexion.Conexion;
 
 /**
  *
- * @author TeLesheo
+ * @author asielapodaca
  */
 public class RetiroSinCuentaForm extends javax.swing.JDialog {
-    
     private Conexion conexion;
-
     /**
-     * Creates new form RetirnoSinCuentaForm
+     * Creates new form RetiroSInCuenta
      */
     public RetiroSinCuentaForm(java.awt.Frame parent, boolean modal, Conexion conexion) {
         super(parent, modal);
@@ -32,31 +30,30 @@ public class RetiroSinCuentaForm extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         btn_retirar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         txt_folio = new javax.swing.JTextField();
         txt_code = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(17, 31, 77));
-        jPanel2.setMinimumSize(new java.awt.Dimension(750, 500));
-        jPanel2.setPreferredSize(new java.awt.Dimension(750, 500));
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        jPanel3.setBackground(new java.awt.Color(17, 31, 77));
+        jPanel3.setMinimumSize(new java.awt.Dimension(750, 500));
+        jPanel3.setPreferredSize(new java.awt.Dimension(750, 500));
+        jPanel3.setLayout(new java.awt.GridBagLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 114, 179));
-        jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel4.setBackground(new java.awt.Color(0, 114, 179));
+        jPanel4.setPreferredSize(new java.awt.Dimension(600, 400));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("DejaVu Sans Mono for Powerline", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Retiro sin cuenta");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 210, 48));
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 210, 48));
 
         btn_retirar.setBackground(new java.awt.Color(0, 194, 206));
         btn_retirar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -67,12 +64,12 @@ public class RetiroSinCuentaForm extends javax.swing.JDialog {
                 btn_retirarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_retirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 125, 38));
+        jPanel4.add(btn_retirar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 125, 38));
 
-        jLabel1.setFont(new java.awt.Font("Avenir Next", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Contraseña");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, 48));
+        jLabel3.setFont(new java.awt.Font("Avenir Next", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Contraseña");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, 48));
 
         txt_folio.setBackground(new java.awt.Color(255, 255, 255));
         txt_folio.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +77,7 @@ public class RetiroSinCuentaForm extends javax.swing.JDialog {
                 txt_folioActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_folio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 278, 44));
+        jPanel4.add(txt_folio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 278, 44));
 
         txt_code.setBackground(new java.awt.Color(255, 255, 255));
         txt_code.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -90,28 +87,27 @@ public class RetiroSinCuentaForm extends javax.swing.JDialog {
                 txt_codeActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 280, 47));
+        jPanel4.add(txt_code, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 280, 47));
 
         jLabel4.setFont(new java.awt.Font("Avenir Next", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Folio");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, 48));
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, -1, 48));
 
-        jPanel2.add(jPanel1, new java.awt.GridBagConstraints());
+        jPanel3.add(jPanel4, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_retirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_retirarActionPerformed
@@ -127,16 +123,19 @@ public class RetiroSinCuentaForm extends javax.swing.JDialog {
     }//GEN-LAST:event_txt_codeActionPerformed
 
     
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_retirar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPasswordField txt_code;
+    private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_folio;
     // End of variables declaration//GEN-END:variables
 }
