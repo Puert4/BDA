@@ -28,9 +28,13 @@ public class LogInForm extends javax.swing.JDialog {
     public void LogIn() {
         String correo = txt_email.getText();
         String passcode = txt_passcode.getText();
-        int id = verify.verificarCredenciales(correo, passcode);
-        if(id == -1){
+        int id_usuario = verify.verificarCredenciales(correo, passcode);
+        if(id_usuario == -1){
             JOptionPane.showMessageDialog(null,"El correo no está registrado o la contraseña es incorrecta.");
+        }else{
+            CuentasForm cuentasForm = new CuentasForm(conexion, id_usuario);
+            this.dispose();
+            cuentasForm.setVisible(true);
         }
         
        
