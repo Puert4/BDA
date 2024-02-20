@@ -10,6 +10,7 @@ import com.mycompany.cajeropersistencia.DTO.DomicilioNuevoDTO;
 import com.mycompany.cajeropersistencia.conexion.Conexion;
 import com.mycompany.cajeropersistencia.conexion.IConexion;
 import com.mycompany.cajeropersistencia.exceptions.PersistenciaException;
+import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,7 +34,7 @@ public class DomicilioDAO implements IDomicilioDAO {
                 VALUES (?,?,?,?,?);              
                               """;
 
-        try (Connection conexion = this.conexionBD,.obtenerConexion(); 
+        try (Connection conexion = this.conexionBD.obtenerConexion(); 
                 ) {
         } catch (Exception e) {
             logger.log(Level.SEVERE, "No se pudo guardar domicilio", e);
