@@ -55,27 +55,26 @@ public class CuentaForm extends javax.swing.JDialog {
         
         //Muestra lista de operaciones
         // Lista de cuentas
-        JPanel panel_cuentas = new JPanel();
-        panel_cuentas.setLayout(new GridLayout(0, 1));
+        JPanel panel_operaciones = new JPanel();
+        panel_operaciones.setLayout(new GridLayout(0, 1));
         ArrayList<Transaccion> lista_operaciones = tDAO.lista_operaciones_de_cuenta(cuenta.getId_cuenta());
+        
+        
         
         for (Transaccion transaccion : lista_operaciones) {
             JPanel panel_transaccion = new JPanel(new BorderLayout());
-            JLabel label_transaccion = new JLabel(transaccion.getTipo());
-            JButton btnVerInfo = new JButton("Ver cuenta");
-            btnVerInfo.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    btn_ver_cuentaActionPerformed(e,cuenta);
-                }
-            });
-            panel_cuenta.add(label_cuenta, BorderLayout.CENTER);
-            panel_cuenta.add(btnVerInfo, BorderLayout.EAST);
-            panel_cuentas.add(panel_cuenta);
+            JLabel label_tipo = new JLabel(transaccion.getTipo());
+            JLabel label_cantidad = new JLabel(String.valueOf(transaccion.getCantidad()));
+            //JLabel label_fecha_hora = new JLabel(transaccion.getFecha_hora());
+            
+            panel_transaccion.add(label_tipo, BorderLayout.CENTER);
+            panel_transaccion.add(label_cantidad, BorderLayout.EAST);
+            //panel_transaccion.add(label_fecha_hora, BorderLayout.CENTER);
+            panel_operaciones.add(panel_transaccion);
         }
-        JScrollPane scrollPane = new JScrollPane(panel_cuentas);
-        this.contenedor_lista_cuentas.removeAll();
-        this.contenedor_lista_cuentas.add(scrollPane);
+        JScrollPane OpScrollPane = new JScrollPane(panel_operaciones);
+        this.contenedor_lista_operaciones.removeAll();
+        this.contenedor_lista_operaciones.add(OpScrollPane);
     }
 
     /**
@@ -89,8 +88,7 @@ public class CuentaForm extends javax.swing.JDialog {
 
         grupo_tipo_operacion = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
-        contenedor_lista_cuentas = new javax.swing.JPanel();
-        jsp_historial_operaciones = new javax.swing.JScrollPane();
+        contenedor_lista_operaciones = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -123,25 +121,9 @@ public class CuentaForm extends javax.swing.JDialog {
         jPanel2.setPreferredSize(new java.awt.Dimension(750, 500));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        contenedor_lista_cuentas.setBackground(new java.awt.Color(242, 244, 247));
-
-        jsp_historial_operaciones.setBackground(new java.awt.Color(242, 244, 247));
-        jsp_historial_operaciones.setBorder(null);
-
-        javax.swing.GroupLayout contenedor_lista_cuentasLayout = new javax.swing.GroupLayout(contenedor_lista_cuentas);
-        contenedor_lista_cuentas.setLayout(contenedor_lista_cuentasLayout);
-        contenedor_lista_cuentasLayout.setHorizontalGroup(
-            contenedor_lista_cuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jsp_historial_operaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
-        );
-        contenedor_lista_cuentasLayout.setVerticalGroup(
-            contenedor_lista_cuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contenedor_lista_cuentasLayout.createSequentialGroup()
-                .addComponent(jsp_historial_operaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(contenedor_lista_cuentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 650, 250));
+        contenedor_lista_operaciones.setBackground(new java.awt.Color(242, 244, 247));
+        contenedor_lista_operaciones.setLayout(new java.awt.BorderLayout());
+        jPanel2.add(contenedor_lista_operaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 650, 250));
 
         jPanel1.setBackground(new java.awt.Color(0, 114, 179));
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
@@ -455,7 +437,7 @@ public class CuentaForm extends javax.swing.JDialog {
     private javax.swing.JButton btn_depositar;
     private javax.swing.JButton btn_retiro_sin_cuenta;
     private javax.swing.JButton btn_transferencia;
-    private javax.swing.JPanel contenedor_lista_cuentas;
+    private javax.swing.JPanel contenedor_lista_operaciones;
     private javax.swing.ButtonGroup grupo_tipo_operacion;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -472,7 +454,6 @@ public class CuentaForm extends javax.swing.JDialog {
     private javax.swing.JCheckBox jcb_rango_fechas;
     private com.toedter.calendar.JDateChooser jdc_fecha_desde;
     private com.toedter.calendar.JDateChooser jdc_fecha_hasta;
-    private javax.swing.JScrollPane jsp_historial_operaciones;
     private javax.swing.JRadioButton rbtn_deposito;
     private javax.swing.JRadioButton rbtn_deposito1;
     private javax.swing.JRadioButton rbtn_retiro_sin_cuenta;
