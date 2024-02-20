@@ -50,7 +50,7 @@ public class CuentasForm extends javax.swing.JFrame {
             btnVerInfo.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    // Aquí puedes implementar la lógica para ver la información de la cuenta
+                    btn_ver_cuentaActionPerformed(e,cuenta);
                 }
             });
             panel_cuenta.add(label_cuenta, BorderLayout.CENTER);
@@ -207,8 +207,9 @@ public class CuentasForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_ver_cuentaActionPerformed(java.awt.event.ActionEvent evt){
-        
+    private void btn_ver_cuentaActionPerformed(java.awt.event.ActionEvent evt, Cuenta cuenta){
+        CuentaForm cuentaForm = new CuentaForm(this, true, conexion, cuenta);
+        cuentaForm.setVisible(true);
     }
     
     private void btn_crear_cuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_crear_cuentaMouseClicked

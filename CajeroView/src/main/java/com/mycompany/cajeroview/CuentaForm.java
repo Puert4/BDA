@@ -4,18 +4,24 @@
  */
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajeroentidades.Cuenta;
+import com.mycompany.cajeropersistencia.conexion.Conexion;
+
 /**
  *
  * @author asielapodaca
  */
 public class CuentaForm extends javax.swing.JDialog {
-
+    private Conexion conexion;
+    private Cuenta cuenta;
     /**
      * Creates new form TransaccionRetiroSinCuentaForm
      */
-    public CuentaForm(java.awt.Frame parent, boolean modal) {
+    public CuentaForm(java.awt.Frame parent, boolean modal, Conexion conexion, Cuenta cuenta) {
         super(parent, modal);
         initComponents();
+        this.conexion = conexion;
+        this.cuenta = cuenta;
     }
 
     /**
@@ -85,7 +91,7 @@ public class CuentaForm extends javax.swing.JDialog {
 
         btn_cancelar_cuenta.setBackground(new java.awt.Color(140, 198, 195));
         btn_cancelar_cuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn_cancelar_cuenta.setForeground(new java.awt.Color(255, 255, 255));
+        btn_cancelar_cuenta.setForeground(new java.awt.Color(0, 0, 0));
         btn_cancelar_cuenta.setText("Cancelar cuenta");
         btn_cancelar_cuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cancelar_cuenta.addActionListener(new java.awt.event.ActionListener() {
@@ -291,7 +297,7 @@ public class CuentaForm extends javax.swing.JDialog {
 
         btn_depositar.setBackground(new java.awt.Color(0, 194, 206));
         btn_depositar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn_depositar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_depositar.setForeground(new java.awt.Color(0, 0, 0));
         btn_depositar.setText("Depositar");
         btn_depositar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_depositar.addActionListener(new java.awt.event.ActionListener() {
@@ -303,7 +309,7 @@ public class CuentaForm extends javax.swing.JDialog {
 
         btn_retiro_sin_cuenta.setBackground(new java.awt.Color(0, 194, 206));
         btn_retiro_sin_cuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn_retiro_sin_cuenta.setForeground(new java.awt.Color(255, 255, 255));
+        btn_retiro_sin_cuenta.setForeground(new java.awt.Color(0, 0, 0));
         btn_retiro_sin_cuenta.setText("Retiro sin cuenta");
         btn_retiro_sin_cuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_retiro_sin_cuenta.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +321,7 @@ public class CuentaForm extends javax.swing.JDialog {
 
         btn_transferencia.setBackground(new java.awt.Color(0, 194, 206));
         btn_transferencia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn_transferencia.setForeground(new java.awt.Color(255, 255, 255));
+        btn_transferencia.setForeground(new java.awt.Color(0, 0, 0));
         btn_transferencia.setText("Transferencia");
         btn_transferencia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_transferencia.addActionListener(new java.awt.event.ActionListener() {
@@ -384,48 +390,6 @@ public class CuentaForm extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtn_deposito1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CuentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CuentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CuentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CuentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                CuentaForm dialog = new CuentaForm(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cancelar_cuenta;
