@@ -4,6 +4,7 @@
  */
 package com.mycompany.cajerocontrol;
 
+import com.mycompany.cajeroentidades.Cuenta;
 import com.mycompany.cajeropersistencia.DAOS.CuentaDAO;
 import com.mycompany.cajeropersistencia.DAOS.StoredProceduresDAO;
 import com.mycompany.cajeropersistencia.DTO.ClienteNuevoDTO;
@@ -32,5 +33,9 @@ public class StoredProcedures{
     
     public void crear_cuenta(int id_usuario){
         spDAO.crear_cuenta(id_usuario);
+    }
+    
+    public String crear_retiro_sin_cuenta(Cuenta cuenta, float cantidad){
+        return spDAO.crear_retiro_sin_cuenta(cuenta, cantidad);
     }
 }

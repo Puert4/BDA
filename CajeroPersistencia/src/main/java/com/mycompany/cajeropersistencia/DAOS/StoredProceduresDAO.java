@@ -4,6 +4,7 @@
  */
 package com.mycompany.cajeropersistencia.DAOS;
 
+import com.mycompany.cajeroentidades.Cuenta;
 import com.mycompany.cajeropersistencia.DTO.ClienteNuevoDTO;
 import com.mycompany.cajeropersistencia.DTO.DomicilioNuevoDTO;
 import com.mycompany.cajeropersistencia.DTO.UsuarioNuevoDTO;
@@ -74,5 +75,35 @@ public class StoredProceduresDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+    public String crear_retiro_sin_cuenta(Cuenta cuenta, float cantidad){
+        try (Connection connection = conexion.obtenerConexion()) {
+            String procedureCall = "{call AgregarTransaccion(?, ?, ?)}";
+            CallableStatement statement = connection.prepareCall(procedureCall);
+            
+            // Configura los parámetros del procedimiento almacenado
+            statement.setFloat(1, cantidad);
+            statement.setInt(2, cuenta.getId_cuenta());
+            statement.setString(3, "RetiroSinCuenta");
+
+            // Ejecuta el procedimiento almacenado
+            statement.execute();
+
+            // Obtiene los resultados
+            ResultSet rs = statement.getResultSet();
+            if (rs.next()) {
+                String folio = rs.getString("folio");
+                String codigo = rs.getString("codigo");
+                System.out.println("Folio " + folio);
+                System.out.println("Codigo " + codigo);
+                
+                return "Folio: "+folio+", Código: "+codigo+", recuerda que esta operación solo será valida dentro de 10 minutos";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            
+        }
+        return "No se pudo hacer la operación";
     }
 }

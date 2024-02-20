@@ -4,6 +4,7 @@
  */
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajerocontrol.StoredProcedures;
 import com.mycompany.cajeroentidades.Cuenta;
 import com.mycompany.cajeropersistencia.conexion.Conexion;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
 public class TransaccionRetiroSinCuenta extends javax.swing.JDialog {
     private Conexion conexion;
     private Cuenta cuenta;
+    private StoredProcedures sp;
     /**
      * Creates new form TransaccionRetiroSinCuenta
      */
@@ -23,6 +25,7 @@ public class TransaccionRetiroSinCuenta extends javax.swing.JDialog {
         initComponents();
         this.conexion = conexion;
         this.cuenta = cuenta;
+        this.sp = new StoredProcedures(conexion);
     }
 
     /**
@@ -111,7 +114,7 @@ public class TransaccionRetiroSinCuenta extends javax.swing.JDialog {
     private void btn_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmarActionPerformed
         int cantidad = Integer.parseInt(txt_cantidad.getText());
         if(cantidad > 0){
-            
+            JOptionPane.showMessageDialog(null, sp.crear_retiro_sin_cuenta(cuenta, cantidad));
         }else{
             JOptionPane.showMessageDialog(null, "La cantidad ingresada debe ser mayor a 0.");
         }
