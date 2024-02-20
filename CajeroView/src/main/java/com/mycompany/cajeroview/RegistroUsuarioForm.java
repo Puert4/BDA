@@ -1,21 +1,27 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ */
 package com.mycompany.cajeroview;
 
 import com.mycompany.cajeropersistencia.DTO.UsuarioNuevoDTO;
+import com.mycompany.cajeropersistencia.conexion.Conexion;
 import com.mycompany.cajeropersistencia.exceptions.PersistenciaException;
 import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
-import javax.swing.JOptionPane;
 
 /**
  *
- * @author TeLesheo
+ * @author asielapodaca
  */
-public class RegistroUsuarioForm extends javax.swing.JFrame {
-
+public class RegistroUsuarioForm extends javax.swing.JDialog {
+    private Conexion conexion;
     /**
-     * Creates new form RegistroUsuarioForm
+     * Creates new form RegistroUsuario
      */
-    public RegistroUsuarioForm() {
+    public RegistroUsuarioForm(java.awt.Dialog parent, boolean modal, Conexion conexion) {
+        super(parent, modal);
         initComponents();
+        this.conexion = conexion;
     }
 
     private void RegistrarUsuario() throws ValidacionDTOException, PersistenciaException {
@@ -34,7 +40,7 @@ public class RegistroUsuarioForm extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validacion", JOptionPane.ERROR_MESSAGE);
 //        }
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,7 +63,7 @@ public class RegistroUsuarioForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txt_confirmacion_passcode = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(17, 31, 77));
@@ -178,40 +184,6 @@ public class RegistroUsuarioForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_confirmacion_passcodeActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(RegistroUsuarioForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(RegistroUsuarioForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(RegistroUsuarioForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(RegistroUsuarioForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new RegistroUsuarioForm().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_siguiente;

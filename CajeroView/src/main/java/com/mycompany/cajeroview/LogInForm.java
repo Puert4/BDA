@@ -107,12 +107,13 @@ public class LogInForm extends javax.swing.JDialog {
 
         btn_registrate.setForeground(new java.awt.Color(0, 153, 255));
         btn_registrate.setText("Registrate");
+        btn_registrate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_registrate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_registrateMouseClicked(evt);
             }
         });
-        jPanel1.add(btn_registrate, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, -1, -1));
+        jPanel1.add(btn_registrate, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -154,7 +155,8 @@ public class LogInForm extends javax.swing.JDialog {
     }//GEN-LAST:event_btn_iniciar_sesionActionPerformed
 
     private void btn_registrateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registrateMouseClicked
-        // TODO add your handling code here:
+        RegistroUsuarioForm RUF = new RegistroUsuarioForm(this, true, conexion);
+        RUF.setVisible(true);
     }//GEN-LAST:event_btn_registrateMouseClicked
 
 
