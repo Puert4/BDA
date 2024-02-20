@@ -55,8 +55,12 @@ public class CuentaForm extends javax.swing.JDialog {
         btn_transferencia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(750, 500));
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(17, 31, 77));
+        jPanel2.setMinimumSize(new java.awt.Dimension(750, 500));
+        jPanel2.setPreferredSize(new java.awt.Dimension(750, 500));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         contenedor_lista_cuentas.setBackground(new java.awt.Color(242, 244, 247));
@@ -205,7 +209,7 @@ public class CuentaForm extends javax.swing.JDialog {
         jft_fecha2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
 
         jft_fecha1.setBackground(new java.awt.Color(255, 255, 255));
-        jft_fecha1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat(""))));
+        jft_fecha1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Avenir Next Condensed", 0, 14)); // NOI18N
@@ -303,6 +307,7 @@ public class CuentaForm extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void rbtn_retiro_sin_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_retiro_sin_cuentaActionPerformed
