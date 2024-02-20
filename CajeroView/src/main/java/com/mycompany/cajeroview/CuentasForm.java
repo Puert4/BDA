@@ -28,13 +28,7 @@ public class CuentasForm extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         contenedor_lista_cuentas = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        btn_ver_cuenta = new javax.swing.JButton();
+        jsp_lista_cuentas = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         btn_iniciar_sesion = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -50,53 +44,20 @@ public class CuentasForm extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         contenedor_lista_cuentas.setBackground(new java.awt.Color(242, 244, 247));
-        contenedor_lista_cuentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jsp_lista_cuentas.setBackground(new java.awt.Color(242, 244, 247));
+        jsp_lista_cuentas.setBorder(null);
 
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel10.setText("Cuenta efectiva digital");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 48));
-
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setText("*1234");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, 48));
-
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(new java.awt.Font("Avenir Next Condensed", 0, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setText("MXN");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 30, 48));
-
-        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel12.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel12.setText("$");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 10, 48));
-
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setText("10,000   saldo actual");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 160, 48));
-
-        btn_ver_cuenta.setBackground(new java.awt.Color(0, 194, 206));
-        btn_ver_cuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn_ver_cuenta.setForeground(new java.awt.Color(242, 244, 247));
-        btn_ver_cuenta.setText("ver cuenta");
-        btn_ver_cuenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ver_cuentaActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btn_ver_cuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 125, 38));
-
-        contenedor_lista_cuentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 110));
+        javax.swing.GroupLayout contenedor_lista_cuentasLayout = new javax.swing.GroupLayout(contenedor_lista_cuentas);
+        contenedor_lista_cuentas.setLayout(contenedor_lista_cuentasLayout);
+        contenedor_lista_cuentasLayout.setHorizontalGroup(
+            contenedor_lista_cuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsp_lista_cuentas, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+        );
+        contenedor_lista_cuentasLayout.setVerticalGroup(
+            contenedor_lista_cuentasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jsp_lista_cuentas, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+        );
 
         jPanel2.add(contenedor_lista_cuentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 650, 350));
 
@@ -174,10 +135,6 @@ public class CuentasForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_ver_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ver_cuentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_ver_cuentaActionPerformed
-
     private void btn_iniciar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciar_sesionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_iniciar_sesionActionPerformed
@@ -229,19 +186,13 @@ public class CuentasForm extends javax.swing.JFrame {
     private javax.swing.JButton btn_iniciar_sesion;
     private javax.swing.JButton btn_iniciar_sesion2;
     private javax.swing.JLabel btn_usuario;
-    private javax.swing.JButton btn_ver_cuenta;
     private javax.swing.JPanel contenedor_lista_cuentas;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jsp_lista_cuentas;
     // End of variables declaration//GEN-END:variables
 }
