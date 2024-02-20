@@ -16,15 +16,17 @@ public class Transaccion {
     int id_transaccion;
     int id_cuenta;
     String fecha_hora;
+    String tipo;
     float cantidad;
 
     public Transaccion() {
     }
 
-    public Transaccion(int id_transaccion, String fecha_hora, float cantidad, int id_cuenta) {
+    public Transaccion(int id_transaccion, String fecha_hora, float cantidad, String tipo, int id_cuenta) {
         this.id_transaccion = id_transaccion;
         this.fecha_hora = fecha_hora;
         this.cantidad = cantidad;
+        this.tipo = tipo;
         this.id_cuenta = id_cuenta;
     }
 
@@ -50,6 +52,24 @@ public class Transaccion {
         this.fecha_hora = fecha_hora;
     }
 
+    public int getId_cuenta() {
+        return id_cuenta;
+    }
+
+    public void setId_cuenta(int id_cuenta) {
+        this.id_cuenta = id_cuenta;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    
+    
     public float getCantidad() {
         return cantidad;
     }

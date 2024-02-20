@@ -31,6 +31,7 @@ public class CuentaForm extends javax.swing.JDialog {
     private Cuenta cuenta;
     private Verificadores verify;
     private Frame parent;
+    private TransaccionDAO tDAO;
     /**
      * Creates new form TransaccionRetiroSinCuentaForm
      */
@@ -41,6 +42,7 @@ public class CuentaForm extends javax.swing.JDialog {
         this.conexion = conexion;
         this.cuenta = cuenta;
         this.verify = new Verificadores(conexion);
+        this.tDAO = new TransaccionDAO(conexion);
         
         if(cuenta.getEstado_cuenta().equals("Activo")){
             this.txt_saldo.setText(String.valueOf(cuenta.getSaldo_mxn()));
@@ -55,11 +57,11 @@ public class CuentaForm extends javax.swing.JDialog {
         // Lista de cuentas
         JPanel panel_cuentas = new JPanel();
         panel_cuentas.setLayout(new GridLayout(0, 1));
-        ArrayList<Transaccion> lista_cuentas = TransaccionDAO.lista_operaciones_de_cuenta(cuenta.getId_cuenta());
+        ArrayList<Transaccion> lista_operaciones = tDAO.lista_operaciones_de_cuenta(cuenta.getId_cuenta());
         
-        for (Cuenta cuenta : lista_cuentas) {
-            JPanel panel_cuenta = new JPanel(new BorderLayout());
-            JLabel label_cuenta = new JLabel(cuenta.getNumero_cuenta());
+        for (Transaccion transaccion : lista_operaciones) {
+            JPanel panel_transaccion = new JPanel(new BorderLayout());
+            JLabel label_transaccion = new JLabel(transaccion.getTipo());
             JButton btnVerInfo = new JButton("Ver cuenta");
             btnVerInfo.addActionListener(new ActionListener() {
                 @Override

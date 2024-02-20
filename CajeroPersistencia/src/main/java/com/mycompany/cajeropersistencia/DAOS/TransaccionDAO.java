@@ -44,6 +44,7 @@ public class TransaccionDAO implements ITransaccionDAO{
                         rs.getInt("id_transaccion"),
                         rs.getString("fecha_hora"),
                         rs.getFloat("cantidad_mxn"),
+                        rs.getString("tipo"),
                         rs.getInt("id_cuenta")
                 );
                 lista_transacciones.add(transaccion);

@@ -17,8 +17,8 @@ public class Transferencias extends Transaccion {
       
     }
 
-    public Transferencias(int id_transaccion, String fecha_hora, float cantidad, int id_remitente, int id_destino) {
-        super(id_transaccion, fecha_hora, cantidad);
+    public Transferencias(int id_transaccion, String fecha_hora, float cantidad, int id_remitente, int id_destino, String tipo, int id_cuenta) {
+        super(id_transaccion, fecha_hora, cantidad, tipo, id_cuenta);
         this.id_remitente = id_remitente;
         this.id_destino = id_destino;
     }
