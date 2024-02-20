@@ -8,6 +8,8 @@ import com.mycompany.cajeropersistencia.conexion.Conexion;
 import com.mycompany.cajeropersistencia.exceptions.PersistenciaException;
 import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
 import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -20,6 +22,8 @@ public class SignUpForm extends javax.swing.JDialog {
     private Conexion conexion;
     private UsuarioNuevoDTO usuario;
     private StoredProcedures sp;
+    private static final Logger LOG = Logger.getLogger(SignUpForm.class.getName());
+    
     /**
      * Creates new form ClienteForm
      */
@@ -32,6 +36,7 @@ public class SignUpForm extends javax.swing.JDialog {
     }
 
     public void registrarCliente() {
+        // Intenta obtener los datos, si hay algun campo erroneo lanza un JOptionPane y no registra al cliente
         String nombre = txt_nombres.getText();
         String apellido_paterno = txt_apellido_paterno.getText();
         String apellido_materno = txt_apellido_materno.getText();
@@ -40,9 +45,8 @@ public class SignUpForm extends javax.swing.JDialog {
         String calle = txt_calle.getText();
         int numero_interior = Integer.parseInt(txt_numero_interior.getText());
         int numero_exterior = Integer.parseInt(txt_numero_exterior.getText());
-        
-        JOptionPane.showMessageDialog(null, fecha_nacimiento);
-        /**ClienteNuevoDTO clienteNuevo = new ClienteNuevoDTO(
+
+        ClienteNuevoDTO clienteNuevo = new ClienteNuevoDTO(
                 nombre,
                 apellido_paterno,
                 apellido_materno,
@@ -54,12 +58,13 @@ public class SignUpForm extends javax.swing.JDialog {
                 numero_exterior,
                 codigo_postal
         );
-        System.out.println(fecha_nacimiento);
         int id_usuario = sp.crear_usuario_cliente_domicilio(usuario, clienteNuevo, domicilioNuevo);
-        if(id_usuario != -1){
+        JOptionPane.showMessageDialog(null, id_usuario);
+        if (id_usuario != -1) {
             CuentasForm cuentasForm = new CuentasForm(conexion, id_usuario);
             cuentasForm.setVisible(true);
-        }**/
+            this.dispose();
+        }
     }
 
     /**

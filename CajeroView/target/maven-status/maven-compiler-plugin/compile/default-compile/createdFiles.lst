@@ -2,14 +2,12 @@ com/mycompany/cajeroview/CuentaForm$12$1.class
 com/mycompany/cajeroview/CuentaForm$6.class
 com/mycompany/cajeroview/CuentaForm$11.class
 com/mycompany/cajeroview/RegistroUsuarioForm$5.class
-com/mycompany/cajeroview/PaginaPrincipalForm$3.class
 com/mycompany/cajeroview/TransaccionRetiroSinCuenta$2.class
 com/mycompany/cajeroview/CuentaForm$9.class
 com/mycompany/cajeroview/CuentaForm$3.class
 com/mycompany/cajeroview/LogInForm$2.class
 com/mycompany/cajeroview/SignUpForm$1.class
 com/mycompany/cajeroview/TransaccionRetiroSinCuenta.class
-com/mycompany/cajeroview/CuentasForm$4.class
 com/mycompany/cajeroview/SignUpForm$4.class
 com/mycompany/cajeroview/CuentaForm$10.class
 com/mycompany/cajeroview/TransaccionRetiroSinCuenta$3.class
@@ -24,6 +22,7 @@ com/mycompany/cajeroview/SignUpForm$5.class
 com/mycompany/cajeroview/SignUpForm$8.class
 com/mycompany/cajeroview/CuentasForm.class
 com/mycompany/cajeroview/CuentaForm$2.class
+com/mycompany/cajeroview/Main.class
 com/mycompany/cajeroview/SignUpForm$3.class
 com/mycompany/cajeroview/LogInForm$4.class
 com/mycompany/cajeroview/CuentaForm$4.class

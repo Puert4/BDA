@@ -35,13 +35,13 @@ public class CuentasForm extends javax.swing.JFrame {
         contenedor_lista_cuentas = new javax.swing.JPanel();
         jsp_lista_cuentas = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
-        btn_iniciar_sesion = new javax.swing.JButton();
+        btn_cerrar_sesion = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        btn_usuario = new javax.swing.JLabel();
-        btn_iniciar_sesion2 = new javax.swing.JButton();
+        btn_perfil = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        btn_crear_cuenta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -73,17 +73,17 @@ public class CuentasForm extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_iniciar_sesion.setBackground(new java.awt.Color(140, 198, 195));
-        btn_iniciar_sesion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn_iniciar_sesion.setForeground(new java.awt.Color(242, 244, 247));
-        btn_iniciar_sesion.setText("Cerrar sesión");
-        btn_iniciar_sesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_iniciar_sesion.addActionListener(new java.awt.event.ActionListener() {
+        btn_cerrar_sesion.setBackground(new java.awt.Color(140, 198, 195));
+        btn_cerrar_sesion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_cerrar_sesion.setForeground(new java.awt.Color(242, 244, 247));
+        btn_cerrar_sesion.setText("Cerrar sesión");
+        btn_cerrar_sesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cerrar_sesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_iniciar_sesionActionPerformed(evt);
+                btn_cerrar_sesionActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_iniciar_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 125, 38));
+        jPanel1.add(btn_cerrar_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 125, 38));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Avenir Next Condensed", 0, 14)); // NOI18N
@@ -103,31 +103,35 @@ public class CuentasForm extends javax.swing.JFrame {
         jLabel6.setText("0.00");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 230, 48));
 
-        btn_usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/cajeroview/imagenes/usuario.png"))); // NOI18N
-        btn_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_usuarioMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btn_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 40, -1, -1));
-
-        btn_iniciar_sesion2.setBackground(new java.awt.Color(0, 194, 206));
-        btn_iniciar_sesion2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btn_iniciar_sesion2.setForeground(new java.awt.Color(242, 244, 247));
-        btn_iniciar_sesion2.setText("Crear cuenta");
-        btn_iniciar_sesion2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_iniciar_sesion2.addActionListener(new java.awt.event.ActionListener() {
+        btn_perfil.setBackground(new java.awt.Color(0, 194, 206));
+        btn_perfil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_perfil.setForeground(new java.awt.Color(242, 244, 247));
+        btn_perfil.setText("Perfil");
+        btn_perfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_perfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_iniciar_sesion2ActionPerformed(evt);
+                btn_perfilActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_iniciar_sesion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 125, 38));
+        jPanel1.add(btn_perfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 40, 125, 38));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Saldo total de cuentas:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 48));
+
+        btn_crear_cuenta.setBackground(new java.awt.Color(0, 194, 206));
+        btn_crear_cuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_crear_cuenta.setForeground(new java.awt.Color(242, 244, 247));
+        btn_crear_cuenta.setText("Crear cuenta");
+        btn_crear_cuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_crear_cuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_crear_cuentaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_crear_cuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 125, 38));
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 170));
 
@@ -143,59 +147,26 @@ public class CuentasForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_iniciar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciar_sesionActionPerformed
+    private void btn_cerrar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrar_sesionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_iniciar_sesionActionPerformed
+    }//GEN-LAST:event_btn_cerrar_sesionActionPerformed
 
-    private void btn_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_usuarioMouseClicked
+    private void btn_perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_perfilActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_usuarioMouseClicked
+    }//GEN-LAST:event_btn_perfilActionPerformed
 
-    private void btn_iniciar_sesion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciar_sesion2ActionPerformed
+    private void btn_crear_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crear_cuentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_iniciar_sesion2ActionPerformed
+    }//GEN-LAST:event_btn_crear_cuentaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CuentasForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CuentasForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CuentasForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CuentasForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CuentasForm().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_iniciar_sesion;
-    private javax.swing.JButton btn_iniciar_sesion2;
-    private javax.swing.JLabel btn_usuario;
+    private javax.swing.JButton btn_cerrar_sesion;
+    private javax.swing.JButton btn_crear_cuenta;
+    private javax.swing.JButton btn_perfil;
     private javax.swing.JPanel contenedor_lista_cuentas;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;

@@ -14,5 +14,6 @@ com/mycompany/cajeropersistencia/DAOS/CuentaDAO.class
 com/mycompany/cajeropersistencia/DAOS/ITransaccionDAO.class
 com/mycompany/cajeropersistencia/DAOS/TransaccionDAO.class
 com/mycompany/cajeropersistencia/DAOS/DomicilioDAO.class
+com/mycompany/cajeropersistencia/DAOS/StoredProceduresDAO.class
 com/mycompany/cajeropersistencia/DAOS/ICuentaDAO.class
 com/mycompany/cajeropersistencia/DAOS/ClientesDAO.class

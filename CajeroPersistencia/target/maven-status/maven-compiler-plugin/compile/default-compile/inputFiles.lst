@@ -1,6 +1,7 @@
 /Users/asielapodaca/NetBeansProjects/BDAvanzadas/Avance2/BDA/CajeroPersistencia/src/main/java/com/mycompany/cajeropersistencia/conexion/Conexion.java
 /Users/asielapodaca/NetBeansProjects/BDAvanzadas/Avance2/BDA/CajeroPersistencia/src/main/java/com/mycompany/cajeropersistencia/exceptions/PersistenciaException.java
 /Users/asielapodaca/NetBeansProjects/BDAvanzadas/Avance2/BDA/CajeroPersistencia/src/main/java/com/mycompany/cajeropersistencia/DAOS/TransferenciaDAO.java
+/Users/asielapodaca/NetBeansProjects/BDAvanzadas/Avance2/BDA/CajeroPersistencia/src/main/java/com/mycompany/cajeropersistencia/DAOS/StoredProceduresDAO.java
 /Users/asielapodaca/NetBeansProjects/BDAvanzadas/Avance2/BDA/CajeroPersistencia/src/main/java/com/mycompany/cajeropersistencia/DAOS/ITransaccionDAO.java
 /Users/asielapodaca/NetBeansProjects/BDAvanzadas/Avance2/BDA/CajeroPersistencia/src/main/java/com/mycompany/cajeropersistencia/DAOS/IDomicilioDAO.java
 /Users/asielapodaca/NetBeansProjects/BDAvanzadas/Avance2/BDA/CajeroPersistencia/src/main/java/com/mycompany/cajeropersistencia/DAOS/IClientesDAO.java
