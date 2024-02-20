@@ -26,39 +26,168 @@ public class CuentasForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtp_saldo_cuentas = new javax.swing.JTextPane();
+        jPanel2 = new javax.swing.JPanel();
+        contenedor_lista_cuentas = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        btn_ver_cuenta = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        btn_iniciar_sesion = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        btn_usuario = new javax.swing.JLabel();
+        btn_iniciar_sesion2 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("SALDO DE CUENTAS:");
+        jPanel2.setBackground(new java.awt.Color(17, 31, 77));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jScrollPane1.setViewportView(txtp_saldo_cuentas);
+        contenedor_lista_cuentas.setBackground(new java.awt.Color(242, 244, 247));
+        contenedor_lista_cuentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("Cuenta efectiva digital");
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 48));
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setText("*1234");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, -1, 48));
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Avenir Next Condensed", 0, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setText("MXN");
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 30, 48));
+
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel12.setText("$");
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 10, 48));
+
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("10,000   saldo actual");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 160, 48));
+
+        btn_ver_cuenta.setBackground(new java.awt.Color(0, 194, 206));
+        btn_ver_cuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_ver_cuenta.setForeground(new java.awt.Color(242, 244, 247));
+        btn_ver_cuenta.setText("ver cuenta");
+        btn_ver_cuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ver_cuentaActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btn_ver_cuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 125, 38));
+
+        contenedor_lista_cuentas.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 110));
+
+        jPanel2.add(contenedor_lista_cuentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 650, 350));
+
+        jPanel1.setBackground(new java.awt.Color(0, 114, 179));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_iniciar_sesion.setBackground(new java.awt.Color(140, 198, 195));
+        btn_iniciar_sesion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_iniciar_sesion.setForeground(new java.awt.Color(242, 244, 247));
+        btn_iniciar_sesion.setText("Cerrar sesión");
+        btn_iniciar_sesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_iniciar_sesionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_iniciar_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 125, 38));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Avenir Next Condensed", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("MXN");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, 48));
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Avenir Next Condensed", 0, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("$");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, 48));
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Avenir Next Condensed", 0, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("0.00");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 230, 48));
+
+        btn_usuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_usuarioMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btn_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 40, -1, -1));
+
+        btn_iniciar_sesion2.setBackground(new java.awt.Color(0, 194, 206));
+        btn_iniciar_sesion2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_iniciar_sesion2.setForeground(new java.awt.Color(242, 244, 247));
+        btn_iniciar_sesion2.setText("Crear cuenta");
+        btn_iniciar_sesion2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_iniciar_sesion2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_iniciar_sesion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 125, 38));
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Saldo total de cuentas:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 48));
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 170));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(550, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(315, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_ver_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ver_cuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_ver_cuentaActionPerformed
+
+    private void btn_iniciar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciar_sesionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_iniciar_sesionActionPerformed
+
+    private void btn_usuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_usuarioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_usuarioMouseClicked
+
+    private void btn_iniciar_sesion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciar_sesion2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_iniciar_sesion2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -96,8 +225,22 @@ public class CuentasForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane txtp_saldo_cuentas;
+    private javax.swing.JButton btn_iniciar_sesion;
+    private javax.swing.JButton btn_iniciar_sesion2;
+    private javax.swing.JLabel btn_usuario;
+    private javax.swing.JButton btn_ver_cuenta;
+    private javax.swing.JPanel contenedor_lista_cuentas;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
