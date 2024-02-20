@@ -1,6 +1,10 @@
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajerocontrol.StoredProcedures;
+import com.mycompany.cajeropersistencia.DTO.ClienteNuevoDTO;
+import com.mycompany.cajeropersistencia.DTO.DomicilioNuevoDTO;
 import com.mycompany.cajeropersistencia.DTO.UsuarioNuevoDTO;
+import com.mycompany.cajeropersistencia.conexion.Conexion;
 import com.mycompany.cajeropersistencia.exceptions.PersistenciaException;
 import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
 
@@ -10,27 +14,44 @@ import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
  */
 public class SignUpForm extends javax.swing.JDialog {
 
-    
-    UsuarioNuevoDTO usuario;
+    private Conexion conexion;
+    private UsuarioNuevoDTO usuario;
+    private StoredProcedures sp;
     /**
      * Creates new form ClienteForm
      */
-    public SignUpForm(java.awt.Frame parent, boolean modal,UsuarioNuevoDTO usuario) {
+    public SignUpForm(java.awt.Dialog parent, boolean modal, Conexion conexion, UsuarioNuevoDTO usuario) {
         super(parent, modal);
         initComponents();
+        sp = new StoredProcedures(conexion);
+        this.conexion = conexion;
         this.usuario = usuario;
     }
 
     public void registrarCliente() {
-        String nomrbe = txt_nombres.getText();
+        String nombre = txt_nombres.getText();
         String apellido_paterno = txt_apellido_paterno.getText();
         String apellido_materno = txt_apellido_materno.getText();
-        String fecha_nacimiento = txt_fecha_nacimiento.getText();
+        String fecha_nacimiento = jdc_fecha_nacimiento.getDateFormatString();
         int codigo_postal = Integer.parseInt(txt_codigo_postal.getText());
         String calle = txt_calle.getText();
         int numero_interior = Integer.parseInt(txt_numero_interior.getText());
         int numero_exterior = Integer.parseInt(txt_numero_exterior.getText());
-
+        
+        ClienteNuevoDTO clienteNuevo = new ClienteNuevoDTO(
+                nombre,
+                apellido_paterno,
+                apellido_materno,
+                fecha_nacimiento
+        );
+        DomicilioNuevoDTO domicilioNuevo = new DomicilioNuevoDTO(
+                calle,
+                numero_interior,
+                numero_exterior,
+                codigo_postal
+        );
+        
+        sp.crear_usuario_cliente_domicilio(usuario, clienteNuevo, domicilioNuevo);
     }
 
     /**
@@ -52,7 +73,6 @@ public class SignUpForm extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         txt_apellido_materno = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txt_fecha_nacimiento = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txt_codigo_postal = new javax.swing.JTextField();
@@ -62,6 +82,7 @@ public class SignUpForm extends javax.swing.JDialog {
         txt_numero_exterior = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txt_numero_interior = new javax.swing.JTextField();
+        jdc_fecha_nacimiento = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -130,10 +151,6 @@ public class SignUpForm extends javax.swing.JDialog {
         jLabel7.setText("Información de dirección");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, 48));
 
-        txt_fecha_nacimiento.setBackground(new java.awt.Color(255, 255, 255));
-        txt_fecha_nacimiento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy"))));
-        jPanel1.add(txt_fecha_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 150, 30));
-
         jLabel8.setFont(new java.awt.Font("Avenir Next Condensed", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Fecha nacimiento");
@@ -191,6 +208,10 @@ public class SignUpForm extends javax.swing.JDialog {
         });
         jPanel1.add(txt_numero_interior, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, 110, 30));
 
+        jdc_fecha_nacimiento.setBackground(new java.awt.Color(255, 255, 255));
+        jdc_fecha_nacimiento.setDateFormatString("dd/MM/yyyy");
+        jPanel1.add(jdc_fecha_nacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 150, 30));
+
         jPanel2.add(jPanel1, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -213,7 +234,7 @@ public class SignUpForm extends javax.swing.JDialog {
     }//GEN-LAST:event_txt_nombresActionPerformed
 
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
-        // TODO add your handling code here:
+        this.registrarCliente();
     }//GEN-LAST:event_btn_registrarActionPerformed
 
     private void txt_apellido_paternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_apellido_paternoActionPerformed
@@ -295,11 +316,11 @@ public class SignUpForm extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private com.toedter.calendar.JDateChooser jdc_fecha_nacimiento;
     private javax.swing.JTextField txt_apellido_materno;
     private javax.swing.JTextField txt_apellido_paterno;
     private javax.swing.JTextField txt_calle;
     private javax.swing.JTextField txt_codigo_postal;
-    private javax.swing.JFormattedTextField txt_fecha_nacimiento;
     private javax.swing.JTextField txt_nombres;
     private javax.swing.JTextField txt_numero_exterior;
     private javax.swing.JTextField txt_numero_interior;

@@ -4,10 +4,12 @@
  */
 package com.mycompany.cajeroview;
 
+import com.mycompany.cajerocontrol.Verificadores;
 import com.mycompany.cajeropersistencia.DTO.UsuarioNuevoDTO;
 import com.mycompany.cajeropersistencia.conexion.Conexion;
 import com.mycompany.cajeropersistencia.exceptions.PersistenciaException;
 import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,6 +17,7 @@ import com.mycompany.cajeropersistencia.exceptions.ValidacionDTOException;
  */
 public class RegistroUsuarioForm extends javax.swing.JDialog {
     private Conexion conexion;
+    private Verificadores verify;
     /**
      * Creates new form RegistroUsuario
      */
@@ -22,23 +25,27 @@ public class RegistroUsuarioForm extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.conexion = conexion;
+        this.verify = new Verificadores(conexion);
     }
 
-    private void RegistrarUsuario() throws ValidacionDTOException, PersistenciaException {
+    private void RegistrarUsuario() {
         String correo = txt_correo.getText();
         String confirmacion_correo = txt_confirmacion_correo.getText();
         String passcode = txt_passcode.getText();
         String confirmacion_passcode = txt_confirmacion_passcode.getText();
-
-        UsuarioNuevoDTO usuarioNuevo = new UsuarioNuevoDTO();
-        usuarioNuevo.setEmail(correo);
-        usuarioNuevo.setPasscode_usuario(passcode);
-//        try {
-//
-//            this.UsuarioDAO.agregar(usuarioNuevo);
-//        } catch (ValidacionDTOException ex) {
-//            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error de validacion", JOptionPane.ERROR_MESSAGE);
-//        }
+        
+        if(correo.equalsIgnoreCase(confirmacion_correo) || passcode.equalsIgnoreCase(confirmacion_passcode)){
+            JOptionPane.showMessageDialog(null, "El correo o la contraseña son diferentes.");
+        }else if(verify.verificarEmailExistente(correo)){
+            JOptionPane.showMessageDialog(null, "Este correo ya está registrado, pruebe con otro correo.");
+        }else{
+            UsuarioNuevoDTO usuarioNuevo = new UsuarioNuevoDTO();
+            usuarioNuevo.setEmail(correo);
+            usuarioNuevo.setPasscode_usuario(passcode);
+            
+            SignUpForm signUp = new SignUpForm(this, true, conexion, usuarioNuevo);
+            
+        }
     }
     
     /**
@@ -173,7 +180,7 @@ public class RegistroUsuarioForm extends javax.swing.JDialog {
     }//GEN-LAST:event_txt_passcodeActionPerformed
 
     private void btn_siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_siguienteActionPerformed
-        // TODO add your handling code here:
+        this.RegistrarUsuario();
     }//GEN-LAST:event_btn_siguienteActionPerformed
 
     private void txt_confirmacion_correoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_confirmacion_correoActionPerformed

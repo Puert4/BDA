@@ -11,7 +11,7 @@ public class ClienteNuevoDTO {
     private String apellido_materno;
     private String fecha_nacimiento;
 
-    ClienteNuevoDTO() {
+    public ClienteNuevoDTO() {
     }
 
     public ClienteNuevoDTO(String nombres, String apellido_paterno, String apellido_materno,String fecha_nacimiento) {

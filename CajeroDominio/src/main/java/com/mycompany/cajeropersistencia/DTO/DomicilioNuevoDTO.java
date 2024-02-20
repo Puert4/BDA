@@ -15,12 +15,19 @@ public class DomicilioNuevoDTO {
     public DomicilioNuevoDTO() {
     }
 
-    public DomicilioNuevoDTO(String calle, int numero_interior, int numero_exterior, int id_cliente, int codigo_postal) {
+    public DomicilioNuevoDTO(String calle, int numero_interior, int numero_exterior, int codigo_postal) {
         this.calle = calle;
         this.numero_interior = numero_interior;
         this.numero_exterior = numero_exterior;
-        this.id_cliente = id_cliente;
         this.codigo_postal = codigo_postal;
+    }
+    
+    public DomicilioNuevoDTO(String calle, int numero_interior, int numero_exterior, int codigo_postal, int id_cliente) {
+        this.calle = calle;
+        this.numero_interior = numero_interior;
+        this.numero_exterior = numero_exterior;
+        this.codigo_postal = codigo_postal;
+        this.id_cliente = id_cliente;
     }
 
     public String getCalle() {
