@@ -25,70 +25,116 @@ public class PaginaPrincipalForm extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
+        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        btn_iniciar_sesion = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btn_iniciar = new javax.swing.JButton();
-        btn_retiro_sin_cuenta = new javax.swing.JButton();
+        btn_retirar_sin_cuenta = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Banco");
+        jPanel2.setBackground(new java.awt.Color(17, 31, 77));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        btn_iniciar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_iniciar.setText("Iniciar");
-        btn_iniciar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_iniciarActionPerformed(evt);
+        jPanel1.setBackground(new java.awt.Color(0, 114, 179));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 400));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_iniciar_sesion.setBackground(new java.awt.Color(0, 194, 206));
+        btn_iniciar_sesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_iniciar_sesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_iniciar_sesionMouseClicked(evt);
             }
         });
+        btn_iniciar_sesion.setLayout(new java.awt.GridBagLayout());
 
-        btn_retiro_sin_cuenta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btn_retiro_sin_cuenta.setText("Retiro sin cuenta");
-        btn_retiro_sin_cuenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_retiro_sin_cuentaActionPerformed(evt);
+        jLabel1.setFont(new java.awt.Font("Galvji", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Iniciar Sesión");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 38, 14, 38);
+        btn_iniciar_sesion.add(jLabel1, gridBagConstraints);
+
+        jPanel1.add(btn_iniciar_sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 199, -1, -1));
+
+        btn_retirar_sin_cuenta.setBackground(new java.awt.Color(140, 198, 195));
+        btn_retirar_sin_cuenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_retirar_sin_cuenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_retirar_sin_cuentaMouseClicked(evt);
             }
         });
+        btn_retirar_sin_cuenta.setLayout(new java.awt.GridBagLayout());
+
+        jLabel3.setFont(new java.awt.Font("Galvji", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Retirar sin cuenta");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 38, 14, 38);
+        btn_retirar_sin_cuenta.add(jLabel3, gridBagConstraints);
+
+        jPanel1.add(btn_retirar_sin_cuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 273, 170, -1));
+
+        jPanel5.setBackground(new java.awt.Color(0, 114, 179));
+        jPanel5.setLayout(new java.awt.GridBagLayout());
+
+        jLabel2.setFont(new java.awt.Font("Noto Serif Myanmar", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(17, 31, 77));
+        jLabel2.setText("B");
+        jLabel2.setAlignmentY(0.0F);
+        jPanel5.add(jLabel2, new java.awt.GridBagConstraints());
+
+        jLabel4.setFont(new java.awt.Font("Noto Serif Myanmar", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("A");
+        jLabel4.setAlignmentY(0.0F);
+        jPanel5.add(jLabel4, new java.awt.GridBagConstraints());
+
+        jLabel5.setFont(new java.awt.Font("Noto Serif Myanmar", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(17, 31, 77));
+        jLabel5.setText("NCO");
+        jLabel5.setAlignmentY(0.0F);
+        jPanel5.add(jLabel5, new java.awt.GridBagConstraints());
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 130, -1));
+
+        jPanel2.add(jPanel1, new java.awt.GridBagConstraints());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(226, 226, 226)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(btn_iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addComponent(btn_retiro_sin_cuenta)))
-                .addContainerGap(221, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(btn_iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_retiro_sin_cuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_iniciarActionPerformed
+    private void btn_iniciar_sesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_iniciar_sesionMouseClicked
+        
+    }//GEN-LAST:event_btn_iniciar_sesionMouseClicked
 
-    private void btn_retiro_sin_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_retiro_sin_cuentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_retiro_sin_cuentaActionPerformed
+    private void btn_retirar_sin_cuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_retirar_sin_cuentaMouseClicked
+        
+    }//GEN-LAST:event_btn_retirar_sin_cuentaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -126,8 +172,15 @@ public class PaginaPrincipalForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_iniciar;
-    private javax.swing.JButton btn_retiro_sin_cuenta;
+    private javax.swing.JPanel btn_iniciar_sesion;
+    private javax.swing.JPanel btn_retirar_sin_cuenta;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }
