@@ -1,0 +1,202 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 CREATE DATABASE IF NOT EXISTS Banco;\
+USE Banco;\
+\
+\
+CREATE TABLE Usuarios (\
+    id_usuario INT PRIMARY KEY AUTO_INCREMENT,\
+    email VARCHAR(255) NOT NULL,\
+    passcode VARCHAR(18) NOT NULL\
+);\
+\
+CREATE TABLE Clientes (\
+    id_cliente INT PRIMARY KEY AUTO_INCREMENT,\
+    nombres VARCHAR(30) NOT NULL,\
+    apellido_paterno VARCHAR(30) NOT NULL,\
+    apellido_materno VARCHAR(30) NOT NULL,\
+    fecha_nacimiento DATE NOT NULL,\
+    Id_usuario INT NOT NULL,\
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)\
+);\
+\
+CREATE TABLE DomiciliosClientes (\
+    id_domicilio INT PRIMARY KEY AUTO_INCREMENT,\
+    codigo_postal VARCHAR(5) NOT NULL,\
+    calle VARCHAR(40) NOT NULL,\
+    numero_exterior VARCHAR(10) NOT NULL,\
+    numero_interno VARCHAR(10),\
+    id_cliente INT,\
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)\
+);\
+\
+\
+CREATE TABLE Cuentas (\
+    id_cuenta INT PRIMARY KEY AUTO_INCREMENT,\
+    numero_cuenta VARCHAR(6) UNIQUE,\
+    fecha_apertura DATE,\
+    saldo_mxn DECIMAL(10,2) DEFAULT 0,\
+    estado ENUM('Activo', 'Cancelado') default 'Activo',\
+    id_usuario INT,\
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)\
+);\
+\
+CREATE TABLE Transacciones (\
+    id_transaccion INT PRIMARY KEY AUTO_INCREMENT,\
+    cantidad_mxn DECIMAL(10,2) NOT NULL,\
+    fecha_hora DATETIME NOT NULL,\
+    tipo ENUM('Transferencia', 'RetiroSinCuenta'),\
+    id_cuenta INT,\
+    FOREIGN KEY (id_cuenta) REFERENCES Cuentas(id_cuenta)\
+);\
+\
+CREATE TABLE Transferencias (\
+    id_transaccion INT,\
+    id_destino INT,\
+    FOREIGN KEY (id_transaccion) REFERENCES Transacciones(id_transaccion),\
+    FOREIGN KEY (id_destino) REFERENCES Cuentas(id_cuenta)\
+);\
+\
+CREATE TABLE RetirosSinCuenta (\
+    id_transaccion INT,\
+    folio VARCHAR(6),\
+    codigo VARCHAR(8),\
+    estado ENUM('Cobrado', 'No cobrado') DEFAULT 'No cobrado',\
+    FOREIGN KEY (id_transaccion) REFERENCES Transacciones(id_transaccion)\
+);\
+\
+\
+\
+DELIMITER //\
+CREATE DEFINER=root@localhost PROCEDURE CreateUsuarioClienteDomicilio(\
+    IN p_email VARCHAR(255),\
+    IN p_passcode VARCHAR(18),\
+    IN p_nombres VARCHAR(30),\
+    IN p_apellido_paterno VARCHAR(30),\
+    IN p_apellido_materno VARCHAR(30),\
+    IN p_fecha_nacimiento DATE,\
+    IN p_codigo_postal VARCHAR(5),\
+    IN p_calle VARCHAR(40),\
+    IN p_numero_exterior VARCHAR(10),\
+    IN p_numero_interno VARCHAR(10)\
+)\
+BEGIN\
+    -- Insert user\
+    INSERT INTO Usuarios (email, passcode) VALUES (p_email, p_passcode);\
+	SET @numeroUsuario = LAST_INSERT_ID();\
+    -- Insert client\
+    INSERT INTO Clientes (nombres, apellido_paterno, apellido_materno, fecha_nacimiento, Id_usuario) \
+    VALUES (p_nombres, p_apellido_paterno, p_apellido_materno, p_fecha_nacimiento, @numeroUsuario );\
+    SET @numeroCliente = LAST_INSERT_ID();\
+    -- Insert address\
+    INSERT INTO DomiciliosClientes (codigo_postal, calle, numero_exterior, numero_interno, id_cliente) \
+    VALUES (p_codigo_postal, p_calle, p_numero_exterior, p_numero_interno,  @numeroCliente);\
+\
+ \
+    SELECT @numeroUsuario AS numeroUsuario, @numeroCliente AS numeroCliente;\
+\
+END //\
+DELIMITER ;\
+\
+\
+DELIMITER //\
+\
+CREATE PROCEDURE CrearCuentaUsuario(IN p_id_usuario INT)\
+BEGIN\
+    DECLARE numeroCuenta VARCHAR(6);\
+    DECLARE cuentaExistente INT;\
+\
+    REPEAT\
+        -- Genera un n\'famero de cuenta de 6 d\'edgitos al azar\
+        SET numeroCuenta = LPAD(FLOOR(RAND() * 1000000), 6, '0');\
+        \
+        -- Verifica si el n\'famero de cuenta ya existe en la tabla de cuentas de usuario\
+        SELECT COUNT(*) INTO cuentaExistente FROM Cuentas WHERE numero_cuenta = numeroCuenta;\
+    UNTIL cuentaExistente = 0 END REPEAT;\
+    \
+    -- Insertar la cuenta de usuario con el n\'famero de cuenta generado\
+    INSERT INTO Cuentas (numero_cuenta, fecha_apertura ,id_usuario) VALUES (numeroCuenta, CURDATE(),p_id_usuario);\
+END//\
+\
+DELIMITER ;\
+\
+DELIMITER //\
+\
+CREATE PROCEDURE AgregarTransaccion(\
+    IN cantidad DECIMAL(10,2),\
+    IN id_cuenta INT,\
+    IN tipo_transaccion ENUM('Transferencia', 'RetiroSinCuenta')\
+)\
+BEGIN\
+	DECLARE folio_generado VARCHAR(6);\
+    DECLARE codigo VARCHAR(8);\
+    DECLARE folioExistente INT;\
+    DECLARE id_transaccion_nueva INT;\
+    \
+    -- Insertar la nueva transacci\'f3n\
+    INSERT INTO Transacciones(cantidad_mxn, fecha_hora, tipo, id_cuenta)\
+    VALUES (cantidad, NOW(), tipo_transaccion, id_cuenta);\
+    \
+    -- Obtener el ID de la transacci\'f3n reci\'e9n insertada\
+    SET id_transaccion_nueva = LAST_INSERT_ID();\
+    \
+    -- Dependiendo del tipo de transacci\'f3n, insertar en la tabla correspondiente\
+    IF tipo_transaccion = 'Transferencia' THEN\
+        INSERT INTO Transferencias(id_transaccion, id_destino)\
+        VALUES (id_transaccion_nueva, id_cuenta);\
+    ELSEIF tipo_transaccion = 'RetiroSinCuenta' THEN\
+\
+    REPEAT\
+        -- Genera un n\'famero de cuenta de 6 d\'edgitos al azar\
+        SET folio_generado = LPAD(FLOOR(RAND() * 1000000), 6, '0');\
+        SET codigo = LPAD(FLOOR(RAND() * 100000000), 8, '0');\
+        \
+        -- Verifica si el n\'famero de cuenta ya existe en la tabla de cuentas de usuario\
+        SELECT COUNT(*) INTO folioExistente FROM RetirosSinCuenta WHERE folio = folio_generado;\
+    UNTIL folioExistente = 0 END REPEAT;\
+    \
+        INSERT INTO RetirosSinCuenta(id_transaccion, folio, codigo)\
+        VALUES (id_transaccion_nueva, folio_generado, codigo);\
+        SELECT folio, codigo FROM RetirosSinCuenta WHERE id_transaccion = id_transaccion_nueva;\
+    END IF;\
+    \
+END //\
+\
+DELIMITER ;\
+\
+\
+DELIMITER //\
+\
+CREATE TRIGGER restar_saldo_despues_retiro\
+AFTER UPDATE ON RetirosSinCuenta\
+FOR EACH ROW\
+BEGIN\
+    DECLARE saldo_retirado DECIMAL(10,2);\
+\
+    IF NEW.estado = 'Cobrado' THEN\
+        -- Obtener la cantidad retirada\
+        SELECT cantidad_mxn INTO saldo_retirado\
+        FROM Transacciones\
+        WHERE id_transaccion = NEW.id_transaccion;\
+\
+        -- Restar la cantidad retirada del saldo de la cuenta\
+        UPDATE Cuentas\
+        SET saldo_mxn = saldo_mxn - saldo_retirado\
+        WHERE id_cuenta = (\
+            SELECT id_cuenta\
+            FROM Transacciones\
+            WHERE id_transaccion = NEW.id_transaccion\
+        );\
+    END IF;\
+END;\
+//\
+\
+DELIMITER ;\
+\
+\
+}
